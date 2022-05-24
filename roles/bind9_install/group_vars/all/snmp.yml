@@ -1,9 +1,0 @@
-# sbaerlocher.snmp - snmp config
-snmp_user: "{{ secret.snmpv3.logicmonitor.user }}"
-snmp_password: "{{ secret.snmpv3.logicmonitor.sha_pass }}"
-snmp_encryption: "{{ secret.snmpv3.logicmonitor.aes_pass }}"
-snmp_contact: "John Ajao"
-snmp_location: "University of California, Santa Barbara"
-snmp_deamon_group: 'snmp'
-snmp_deamon_user: 'snmp'
-
