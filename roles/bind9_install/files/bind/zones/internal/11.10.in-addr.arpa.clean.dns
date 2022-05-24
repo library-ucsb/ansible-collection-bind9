@@ -1,0 +1,179 @@
+
+10.1.11		PTR	nimble-2474.library.ucsb.edu.
+11.1.11		PTR	nhdc-nimble01-ctrl-a.library.ucsb.edu.
+12.1.11		PTR	nhdc-nimble01-ctrl-b.library.ucsb.edu.
+
+20.1.11     PTR nimble2-2474.library.ucsb.edu.
+21.1.11     PTR nhdc-nimble02-ctrl-a.library.ucsb.edu.
+22.1.11     PTR nhdc-nimble02-ctrl-b.library.ucsb.edu.
+100.1.11    PTR ucs-2474.library.ucsb.edu.
+
+;; NHDC NetApp Filer (10.11.1.#)
+139.1.11	PTR	netapp-cluster.library.ucsb.edu.
+140.1.11    PTR netapp-01.library.ucsb.edu.
+141.1.11    PTR netapp-02.library.ucsb.edu.
+142.1.11    PTR	netapp-sp-01.library.ucsb.edu.
+143.1.11    PTR	netapp-sp-02.library.ucsb.edu.
+144.1.11	PTR	netapp-um.library.ucsb.edu.
+150.1.11	PTR	vsmunix.library.ucsb.edu.			;; NetApp Storage Virtual Machine (SVM)
+
+2.2.11		PTR	infiniband3.library.ucsb.edu.			;; 3rd Infiniband (NHDC)
+
+
+;; NHDC UCS Blade ESXi Servers (10.11.10.#)
+11.10.11	PTR	nhdc-esx-11.library.ucsb.edu.			;; UCS 1 Blade 1
+12.10.11	PTR	nhdc-esx-12.library.ucsb.edu.			;; UCS 1 Blade 2
+13.10.11	PTR	nhdc-esx-13.library.ucsb.edu.			;; UCS 1 Blade 3
+14.10.11	PTR	nhdc-esx-14.library.ucsb.edu.			;; UCS 1 Blade 4
+21.10.11	PTR	nhdc-esx-21.library.ucsb.edu.			;; UCS 2 Blade 1
+22.10.11	PTR	nhdc-esx-22.library.ucsb.edu.			;; UCS 2 Blade 2
+23.10.11	PTR	nhdc-esx-23.library.ucsb.edu.			;; UCS 2 Blade 3
+24.10.11	PTR	nhdc-esx-24.library.ucsb.edu.			;; UCS 2 Blade 4
+
+;; LOMs
+32.50.11    PTR stor2-lom.library.ucsb.edu.
+33.50.11    PTR stor3-lom.library.ucsb.edu.
+44.50.11    PTR ns1-lom.library.ucsb.edu.
+45.50.11    PTR ns2-lom.library.ucsb.edu.
+49.50.11    PTR	splunk-lom.library.ucsb.edu.				;; iLO Splunk server
+52.50.11    PTR bind1ilo.library.ucsb.edu.
+53.50.11    PTR bind2ilo.library.ucsb.edu.
+100.50.11   PTR photon-os-1-2474.library.ucsb.edu.
+20.60.11    PTR sshgw-2474.library.ucsb.edu.
+24.60.11    PTR ftpd-2474.library.ucsb.edu.
+42.60.11	PTR bastion-ucsb-lib-1-v2474.library.ucsb.edu.
+52.60.11    PTR librenms.library.ucsb.edu.
+123.60.11   PTR casper-2474.library.ucsb.edu.
+201.60.11   PTR sendmail-relay-2474.library.ucsb.edu.
+29.61.11    PTR jenkins2-2474.library.ucsb.edu.
+7.63.11     PTR openvpn-2474.library.ucsb.edu.
+1.100.11    PTR	netman-2474.library.ucsb.edu.			;; NetManager
+
+;; pfSense Servers
+
+5.100.11	PTR pfsense-classroom.library.ucsb.edu.
+6.100.11	PTR pfsense-wireless.library.ucsb.edu.		;; NAT translation from 172.16.0.0 network to 128.111.95.253
+
+251.255.11  PTR pfsense-ha-1.library.ucsb.edu.
+252.255.11  PTR pfsense-ha-2.library.ucsb.edu.
+253.255.11  PTR pfsense-ha-vip.library.ucsb.edu.
+
+
+;; Random crap
+16.100.11   	PTR 	rodc-2474.library.ucsb.edu.				;; Read Only Domain Controller
+36.100.11   	PTR 	rodc2-2474.library.ucsb.edu.			;; Read Only Domain Controller
+104.100.11  	PTR 	vsphere.library.ucsb.edu.				;; vCenter Appliance
+106.100.11  	PTR 	stash-2474.library.ucsb.edu.			;; Atlassian Stash Git Server
+115.100.11  	PTR	splunk-2474.library.ucsb.edu.			;; Splunk Logging Server
+120.100.11	PTR	librenms-cf.library.ucsb.edu.			;; LibreNMS Server CF Room
+122.100.11  	PTR 	ca-linux.library.ucsb.edu.
+126.100.11	PTR	packetfence-2474.library.ucsb.edu. 		;; PacketFence server
+150.100.11	PTR	d42-rc-01-2474.library.ucsb.edu.		;; Device42 Collector Appliance
+201.100.11	PTR	squid-proxy-2474.library.ucsb.edu.		;; Squid Proxy server
+
+
+3.133.11    	PTR 	stor-nhdc-rw9-r3-u1-stor3-2474.library.ucsb.edu.
+8.207.11    	PTR 	xls.library.ucsb.edu.
+20.207.11   	PTR 	hpfc1.library.ucsb.edu.					;; HP FiberChannel switch
+21.207.11   	PTR 	hpfc2.library.ucsb.edu.					;; HP FiberChannel switch
+
+;; Library Wireless Devices
+1.120.11    	PTR 	radiolib-2474.library.ucsb.edu.
+2.120.11    	PTR 	radioannex-2474.library.ucsb.edu.
+18.120.11   	PTR 	ap-1523-cisco-3702e.library.ucsb.edu.
+19.120.11   	PTR 	ap-1575-cisco-3702e.library.ucsb.edu.
+20.120.11   	PTR 	ap-cheadle-cisco-3702e.library.ucsb.edu.
+21.120.11   	PTR 	ap-pacific-cisco-3702i.library.ucsb.edu.
+22.120.11   	PTR 	ap-access-cisco-3702e.library.ucsb.edu.
+23.120.11   	PTR 	ap-reference-cisco-3702e.library.ucsb.edu.
+24.120.11   	PTR 	ap-1411-cisco-3702i.library.ucsb.edu.
+25.120.11   	PTR 	ap-1312-cisco-3702e.library.ucsb.edu.
+26.120.11   	PTR 	ap-2513-cisco-3702i.library.ucsb.edu.
+27.120.11   	PTR 	ap-collaboratory-cisco-3702i.library.ucsb.edu.
+28.120.11   	PTR 	ap-collaboratory-cisco-3702e.library.ucsb.edu.
+29.120.11   	PTR 	ap-annex2-cisco-3702e.library.ucsb.edu.
+
+;; NHDC Nexus 5010 & 5020 Switches
+1.1.11      	PTR	sw-nhdc-nx5k-1-mgmt.library.ucsb.edu.		;; 1st Nexus 5010, mgmt (NHDC Row 9 Rack 1)
+2.1.11		PTR	sw-nhdc-nx5k-2-mgmt.library.ucsb.edu.		;; 2nd Nexus 5010, mgmt (NHDC Row 9 Rack 1)
+3.1.11	      	PTR 	sw-nhdc-nx5k-1.library.ucsb.edu.        ;; 1st Nexus 5010, SVI
+4.1.11      	PTR 	sw-nhdc-nx5k-2.library.ucsb.edu.        ;; 2nd Nexus 5010, SVI
+1.4.11      	PTR	sw-nhdc-nx5k-1-mgmt.library.ucsb.edu.   ;; 3rd Nexus 5020, mgmt (NHDC Row 9 Rack 1)
+2.4.11		PTR	sw-nhdc-nx5k-2-mgmt.library.ucsb.edu.		;; 4th Nexus 5020, mgmt (NHDC Row 9 Rack 1)
+3.254.11    	PTR 	sw-nhdc-nx5k-1.library.ucsb.edu.        ;; 3rd Nexus 5020, SVI
+4.254.11    	PTR 	sw-nhdc-nx5k-2.library.ucsb.edu.        ;; 4th Nexus 5020, SVI
+
+;; Library Nexus Switches(10.11.207.#)
+1.207.11	PTR	sw-lib-nx7k-1-mgmt.library.ucsb.edu.
+2.207.11	PTR	sw-lib-nx7k-1.library.ucsb.edu.
+11.207.11	PTR	sw-lib-nx5k-1-mgmt.library.ucsb.edu.
+12.207.11	PTR	sw-lib-nx5k-2-mgmt.library.ucsb.edu.
+13.207.11	PTR	sw-lib-nx5k-1.library.ucsb.edu.
+14.207.11	PTR	sw-lib-nx5k-2.library.ucsb.edu.
+
+;; Library HP ProCurve Switches(10.11.124.#)
+1.124.11	PTR	sw-1523-it-procurve-5406zl.library.ucsb.edu.
+2.124.11	PTR	sw-1520e-procurve-5406zl.library.ucsb.edu.
+3.124.11	PTR	sw-2561a-procurve-5406rzl2.library.ucsb.edu.
+4.124.11	PTR	sw-music-procurve-5406zl.library.ucsb.edu.
+6.124.11	PTR	sw-1575-procurve-5412zl.library.ucsb.edu.
+7.124.11	PTR	sw-2561a-procurve-5406zl.library.ucsb.edu.
+8.124.11	PTR	sw-3561a-procurve-5412zl.library.ucsb.edu.
+9.124.11	PTR	sw-4553a-procurve-5406zl.library.ucsb.edu.
+10.124.11	PTR	sw-5543-procurve-5406zl.library.ucsb.edu.
+11.124.11	PTR sw-1508-procurve-5412rzl2.library.ucsb.edu.
+12.124.11	PTR sw-1507-procurve-5412rzl2.library.ucsb.edu.
+13.124.11	PTR sw-2502-procurve-5412rzl2.library.ucsb.edu.
+14.124.11	PTR sw-1327-procurve-5412rzl2.library.ucsb.edu.
+15.124.11	PTR sw-2327-procurve-5412rzl2.library.ucsb.edu.
+16.124.11	PTR sw-3427-procurve-5412rzl2.library.ucsb.edu.
+17.124.11	PTR sw-1507b-procurve-5406zl.library.ucsb.edu.
+97.124.11	PTR sw-test-procurve-5406zl.library.ucsb.edu.
+
+;; Library Cisco Catalyst Switches(10.11.125.#)
+1.125.11		PTR sw-mokuno-cisco-3750.library.ucsb.edu.
+3.125.11		PTR	sw-1523wb-cisco-3750.library.ucsb.edu.
+4.125.11		PTR sw-8543-cisco-3750.library.ucsb.edu.
+5.125.11		PTR sw-annex2-cisco-3750.library.ucsb.edu.
+
+;; UPS & PDU Network Access (10.11.130.#)
+1.130.11    PTR ups-1523cf-apc-6000.library.ucsb.edu.		    ;; 1523 CF, Nexus 7010 Rack
+2.130.11    PTR	ups-1523e-apc-srt2200.library.ucsb.edu.	    ;; 1523 CF, HP Procurve 5406zl Rack
+3.130.11    PTR	ups-1523cf-apc-3000.library.ucsb.edu.		    ;; 1523 CF, HP Procurve 5406zl Rack
+4.130.11    PTR	ups-1523cf-apc-3000rm-1.library.ucsb.edu.	  ;; 1523 CF, Assorted Server Rack
+5.130.11    PTR	ups-1523cf-apc-3000rm-2.library.ucsb.edu.	  ;; 1523 CF, Assorted Server Rack
+6.130.11    PTR ups-1520e-apc-srt2200.library.ucsb.edu.		  ;; 1520E Access Services Network Closet
+7.130.11    PTR ups-1575-apc-srt2200.library.ucsb.edu.	    ;; 1575 Classroom Network Closet
+8.130.11    PTR ups-2561a-apc-srt2200.library.ucsb.edu.	    ;; 2561A Reference Librarian Office Network Closet
+9.130.11    PTR ups-3561a-apc-srt2200.library.ucsb.edu.		    ;; 3561A ARMS & CMS Office Network Closet
+11.130.11   PTR ups-1508-apc-6000rm.library.ucsb.edu.		    ;; Building B, IDF Room 1508
+12.130.11   PTR ups-1507-apc-6000rm.library.ucsb.edu.		    ;; Building B, IDF Room 1507
+13.130.11   PTR ups-2502-apc-6000rm.library.ucsb.edu.		    ;; Building B, IDF Room 2502
+14.130.11   PTR ups-1327-apc-6000rm.library.ucsb.edu.		    ;; Building A, IDF Room 1327
+15.130.11   PTR ups-2327-apc-6000rm.library.ucsb.edu.		    ;; Building A, IDF Room 2327
+16.130.11   PTR ups-3427-apc-6000rm.library.ucsb.edu.		    ;; Building A, IDF Room 3427
+17.130.11   PTR ups1-1523cf-tl-smart5000.library.ucsb.edu.  ;; 1523 CF, Tripp Lite UPS, Where is this?
+18.130.11   PTR ups2-1523cf-tl-smart5000.library.ucsb.edu.  ;; 1523 CF, Tripp Lite UPS, Where is this?
+19.130.11   PTR pdu1-1523cf-tl-mh30hvnet.library.ucsb.edu.  ;; 1523 CF, Tripp Lite UPS, Where is this?
+20.130.11   PTR pdu2-1523cf-tl-mh30hvnet.library.ucsb.edu.  ;; 1523 CF, Tripp Lite UPS, Where is this?
+31.130.11   PTR	ups-1523cf-tripp-5000-1.library.ucsb.edu.   ;; 1523 CF, Applied Data System Rack
+32.130.11   PTR ups-1523cf-tripp-5000-2.library.ucsb.edu.   ;; 1523 CF, Applied Data System Rack
+101.130.11  PTR	pdu-1523cf-tripp-1.library.ucsb.edu.		    ;; 1523 CF, Applied Data System Rack
+102.130.11  PTR	pdu-1523cf-tripp-2.library.ucsb.edu.		    ;; 1523 CF, Applied Data System Rack
+103.130.11  PTR	pdu-1523nx-tripp-1.library.ucsb.edu.		    ;; 1523 CF, Nexus Rack
+104.130.11  PTR	pdu-1523nx-tripp-2.library.ucsb.edu.		    ;; 1523 CF, Nexus Rack
+
+1.131.11	PTR	logs1-2474.library.ucsb.edu.				;; Log server
+
+1.150.11	PTR wlc-1523-cisco-5508.library.ucsb.edu.		;; Service port out-of-band management (SSH) for primary WLC
+2.150.11	PTR wlc-2502-cisco-5508.library.ucsb.edu.		;; Service port out-of-band management (SSH) for secondary WLC
+
+
+1.50.11     PTR packetfence1-2474.library.ucsb.edu.       ;; HTTPS management, SSH, MariaDB cluster traffic
+2.50.11     PTR packetfence2-2474.library.ucsb.edu.       ;; HTTPS management, SSH, MariaDB cluster traffic
+3.50.11     PTR packetfence3-2474.library.ucsb.edu.       ;; HTTPS management, SSH, MariaDB cluster traffic
+10.50.11    PTR packetfence-vip-2474.library.ucsb.edu.    ;; Cluster HTTPS management, SSH, MariaDB cluster traffic
+
+4.207.11	PTR	infiniband1.library.ucsb.edu.				;; NHDC Cisco Infiniband 1
+5.207.11	PTR	infiniband2.library.ucsb.edu.				;; NHDC Cisco Infiniband 2
+

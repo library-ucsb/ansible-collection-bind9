@@ -1,0 +1,62 @@
+$TTL 3h;
+
+@                       IN  SOA ns1.library.ucsb.edu.  sysadmin.library.ucsb.edu. (
+                        	2021010800	; serial number
+                        	3h			; refresh
+                        	1h			; retry
+                        	1w			; expire
+                        	1h       ) 	; default TTL
+
+@			IN NS	ns1.library.ucsb.edu.
+@			IN NS	ns2.library.ucsb.edu.
+
+;; ====================================================================================================================
+;;               Route alexandria.ucsb.edu and www.alexandria.ucsb.edu to HA-HAProxy Pair (SSL Termination)
+;; ====================================================================================================================
+
+@				        A	128.111.87.12
+www		    78761	CNAME	haproxyt.library.ucsb.edu.
+
+;; ====================================================================================================================
+;;                                    Campus Connect/Google E-Mail Related Entries
+;; ====================================================================================================================
+
+@                       60      IN      MX      1      aspmx.l.google.com.
+@                       60      IN      MX      5      alt1.aspmx.l.google.com.
+@                       60      IN      MX      5      alt2.aspmx.l.google.com.
+@                       60      IN      MX      10      aspmx2.googlemail.com.
+@                       60      IN      MX      10      aspmx3.googlemail.com.
+
+approxy			    CNAME	proxy-v.library.ucsb.edu.
+;;coll02bg                A	192.168.2.152
+;;coll02z1g               A	192.168.2.149
+;;coll02z2g               A	192.168.2.148
+;;                        A	192.168.2.150
+collections         CNAME	collections-2.alexandria.ucsb.edu.
+collections-2           A	128.111.87.128
+;;collections-2-p         A	192.168.2.128
+;;collections-1033	    A	192.168.2.127
+collections-2003	    A	10.3.102.127
+db-mysql1-352		CNAME	db-mysql1-352.library.ucsb.edu.
+db-mysql1-1033		CNAME	db-mysql1-1033.library.ucsb.edu.
+;;ibmdb01g                A	192.168.2.18
+legacy			    CNAME 	haproxy.library.ucsb.edu.				;; Legacy ADL through HA-HAproxy pair
+;;legacy			    CNAME 	proxy-v.library.ucsb.edu.
+;;legacy-adl-2005		    A	10.5.101.5
+;;legacy-adl-1033		    A	192.168.2.86
+legacy-stage		CNAME	proxy1.library.ucsb.edu.
+proxy-v             CNAME	proxy1.library.ucsb.edu.
+proxy-lib           CNAME	proxy-lib.library.ucsb.edu.
+proxy1-352		    CNAME	proxy1-352.library.ucsb.edu.
+proxy-lib-352-1		CNAME	proxy-lib.library.ucsb.edu.
+proxy-adrl-352-1	    A	128.111.87.35
+ucftp               CNAME   ftpd-352.library.ucsb.edu.
+piru                CNAME	haproxy.library.ucsb.edu.	
+;;piru                CNAME		proxy-v.library.ucsb.edu.				
+
+;; ---------------------------------------------------------------------------------------------------------------
+;;                                         Old Alexandria (ADL)
+;; ---------------------------------------------------------------------------------------------------------------
+
+$ORIGIN legacy.alexandria.ucsb.edu.
+*                  CNAME	haproxy.library.ucsb.edu.				;; All *.legacy.library.ucsb.edu requests

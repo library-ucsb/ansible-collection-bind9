@@ -1,0 +1,23 @@
+---
+
+bind_servers:
+  children:
+    primaries:
+    secondaries:
+  
+  vars:
+    ansible_ssh_private_key_file: /home/josh/docs/secrets/work/ucsb/ssh-private_key-ansible-deploy.key
+    ansible_user: ansible-deploy
+    #yum_config_proxy: 'http://10.11.100.201:3128'
+
+primaries:
+  hosts:
+    ns1-ucsb-lib:
+      ansible_host: 10.11.3.30
+      #ansible_ssh_extra_args: '-oIdentitiesOnly=true'
+    
+secondaries:
+  hosts:
+    ns2-ucsb-lib:
+      ansible_host: 10.11.3.44
+      #ansible_ssh_extra_args: '-oIdentitiesOnly=true'   

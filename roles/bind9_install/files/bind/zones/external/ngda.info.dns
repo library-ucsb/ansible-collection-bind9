@@ -1,0 +1,32 @@
+$TTL 3h;
+@                       IN  SOA ns1.library.ucsb.edu.  sysadmin.library.ucsb.edu. (
+                                2020062300	; serial number YYYYMMDDSS
+                                3h              ; refresh
+                                1h              ; retry
+                                1w              ; expire
+                                1h       ) 	; minimum TTL
+
+@                       IN NS   ns1.library.ucsb.edu.
+@                       IN NS   ns2.library.ucsb.edu.
+
+;; ====================================================================================================================
+;;                               Route ngda.info to Library HA-HAProxy Servers
+;; ====================================================================================================================
+
+@                A   128.111.87.248
+
+;; ====================================================================================================================
+;;                                    Campus Connect/Google E-Mail Related Entries
+;; ====================================================================================================================
+
+@                       60      IN      MX      20      mx-1.connect.ucsb.edu.
+@                       60      IN      MX      20      mx-2.connect.ucsb.edu.
+
+;; ====================================================================================================================
+;;                                                   Zone Records
+;; ====================================================================================================================
+
+;;edit                CNAME	proxy-lib.library.ucsb.edu.		;; www-1b.ngda.net (now defunct?)
+proxy-v             CNAME	proxy1.library.ucsb.edu.		;; proxy-v.ngda.net (HAProxy Server)
+www			        CNAME	haproxy.library.ucsb.edu.		;; www.ngda.net (HA-HAProxy Servers)
+

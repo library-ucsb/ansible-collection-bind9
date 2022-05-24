@@ -1,0 +1,4 @@
+rrs:
+  - {'label': '16.13', 'type': 'PTR', 'rdata': 'rodc-2480.library.ucsb.edu.'}
+  - {'label': '36.13', 'type': 'PTR', 'rdata': 'rodc2-2480.library.ucsb.edu.'}
+  - {'label': '1.14', 'type': 'PTR', 'rdata': 'svm-vmware-2480.library.ucsb.edu.'}

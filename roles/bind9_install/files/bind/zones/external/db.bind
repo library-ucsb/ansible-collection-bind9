@@ -1,0 +1,14 @@
+$TTL 1D
+$ORIGIN bind.
+@	1D	CHAOS	SOA	localhost.	root.localhost	(
+				2009020600		; serial
+				3H			; refresh
+				1H			; retry
+				1W			; expiry
+				1D	)		; minimum
+
+		CHAOS	NS	localhost.
+
+version.bind.	CHAOS	TXT	"Who's askin?"
+authors.bind.	CHAOS	TXT	"replicator carter"
+

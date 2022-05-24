@@ -1,0 +1,20 @@
+$TTL 3h;
+@                       IN  SOA ns1.library.ucsb.edu.  sysadmin.library.ucsb.edu. (
+                        	2020052700		; serial number
+                        	3h          		; refresh
+                        	1h           		; retry
+                        	1w      		; expire
+                        	1h      ) 		; default TTL
+
+@			IN NS	ns1.library.ucsb.edu.
+@			IN NS	ns2.library.ucsb.edu.
+
+;
+;  Zone records
+;
+
+246    PTR    packetfence1-388.library.ucsb.edu.
+247    PTR    packetfence2-388.library.ucsb.edu.
+248    PTR    packetfence3-388.library.ucsb.edu.
+249    PTR    packetfence-vip-388.library.ucsb.edu.
+;;252    PTR	  packetfence-388.library.ucsb.edu.

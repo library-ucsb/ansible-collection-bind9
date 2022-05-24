@@ -1,0 +1,26 @@
+$TTL 3h;
+@                       IN  SOA ns1.library.ucsb.edu.  dnsadmin.library.ucsb.edu. (
+                        	2019021100		; serial number
+                        	3h          		; refresh
+                        	1h          		; retry
+                        	1w        		; expire
+                        	1h       ) 		; default TTL
+
+;
+;  Zone NS records
+;
+
+@			IN NS	ns1.library.ucsb.edu.
+@			IN NS	ns2.library.ucsb.edu.
+
+;
+;  Zone records
+;
+
+;;88            PTR	collib-laptop.library.ucsb.edu.
+;;103           PTR	tp-mgmt.library.ucsb.edu.
+;;251           PTR	wap-5520.library.ucsb.edu.
+;;252           PTR	wap-cheadle.library.ucsb.edu.
+;;253           PTR	wap-1403c.library.ucsb.edu.
+;;254           PTR	wap-3512.library.ucsb.edu.
+

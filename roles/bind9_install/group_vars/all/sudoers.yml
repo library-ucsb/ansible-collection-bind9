@@ -1,0 +1,104 @@
+sudoers_rewrite_default_sudoers_file: True
+sudoers_remove_unauthorized_included_files: True
+sudoers_backup: False
+sudoers_files:
+  - path: "/etc/sudoers"
+    defaults:
+      - "requiretty"
+      - "!visiblepw"
+      - "always_set_home"
+      - "env_reset"
+      - secure_path:
+          - "/sbin"
+          - "/bin"
+          - "/usr/sbin"
+          - "/usr/bin"
+      - env_keep:
+          - "COLORS"
+          - "DISPLAY"
+          - "HOSTNAME"
+          - "HISTSIZE"
+          - "INPUTRC"
+          - "KDEDIR"
+          - "LS_COLORS"
+          - "MAIL"
+          - "PS1"
+          - "PS2"
+          - "QTDIR"
+          - "USERNAME"
+          - "LANG"
+          - "LC_ADDRESS"
+          - "LC_CTYPE"
+          - "LC_COLLATE"
+          - "LC_IDENTIFICATION"
+          - "LC_MEASUREMENT"
+          - "LC_MESSAGES"
+          - "LC_MONETARY"
+          - "LC_NAME"
+          - "LC_NUMERIC"
+          - "LC_PAPER"
+          - "LC_TELEPHONE"
+          - "LC_TIME"
+          - "LC_ALL"
+          - "LANGUAGE"
+          - "LINGUAS"
+          - "_XKB_CHARSET"
+          - "XAUTHORITY"
+
+    user_specifications:
+
+      - users: ["root"]
+        hosts: ["ALL"]
+        commands: ["ALL"]
+
+      - users: ["ansible-deploy"]
+        hosts: ["ALL"]
+        commands: ["ALL"]
+        operators: ["ALL"]
+
+      - users: ["%ops"]
+        hosts: ["ALL"]
+        commands: ["ALL"]
+
+      - users: ["OPS"]
+        hosts: ["ALL"]
+        commands: ["ALL"]
+    
+    include_directories:
+      - "/etc/sudoers.d"
+    
+    aliases:
+      user_alias:
+        - name: "OPS"
+          users:
+            - "mokuno"
+            - "josh"
+
+
+  - path: "/etc/sudoers.d/ansible"
+    user_specifications:
+      - users:
+          - "ansible-deploy" 
+        type: "user"
+        defaults:
+          - "!requiretty"
+        operators:
+          - "ALL"
+        hosts:
+          - "ALL"
+        commands:
+          - "ALL"
+  
+  - path: "/etc/sudoers.d/bind"
+    user_specifications:
+      - users:
+          - "{{ bind9_user }}"
+        type: "user"
+        defaults:
+          - "!requiretty"
+        hosts:
+          - "ALL"
+        commands:
+          - "ALL" 
+
+  

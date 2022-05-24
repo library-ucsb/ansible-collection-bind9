@@ -1,0 +1,108 @@
+30.3.3      PTR ns1-2003.library.ucsb.edu.
+44.3.3      PTR ns2-2003.library.ucsb.edu.
+51.4.3		PTR	ntp10x.library.ucsb.edu.
+1.10.3      PTR svmwindows-nfs-2476.library.ucsb.edu.
+101.10.3    PTR svmwindows-cifs01.library.ucsb.edu.
+102.10.3    PTR svmwindows-nfs01.library.ucsb.edu.
+201.10.3    PTR svmwindows-cifs02.library.ucsb.edu.
+202.10.3    PTR svmwindows-nfs02.library.ucsb.edu.
+60.50.3		PTR ovirt0.library.ucsb.edu.				;; CF Room oVirt Node 0
+61.50.3		PTR ovirt1.library.ucsb.edu.				;; CF Room oVirt Node 1
+62.50.3		PTR ovirt2.library.ucsb.edu.				;; CF Room oVirt Node 2
+63.50.3		PTR ovirt3.library.ucsb.edu.				;; CF Room oVirt Node 3
+64.50.3		PTR ovirt4.library.ucsb.edu.				;; CF Room oVirt Node 4
+70.50.3		PTR gluster0.library.ucsb.edu.              ;; CF Room Gluster Node 0
+71.50.3		PTR gluster1.library.ucsb.edu.              ;; CF Room Gluster Node 1
+72.50.3		PTR gluster2.library.ucsb.edu.              ;; CF Room Gluster Node 2
+73.50.3		PTR gluster3.library.ucsb.edu.              ;; CF Room Gluster Node 3
+80.50.3		PTR freenas0.library.ucsb.edu.              ;; CF Room FreeNAS 0
+90.50.3		PTR ovirtengine.library.ucsb.edu.           ;; CF Room oVirt Engine (mgmt)
+24.60.3     	PTR ftpd-2476.library.ucsb.edu.
+53.60.3     	PTR sshgw-2476.library.ucsb.edu.
+42.60.3		PTR bastion-ucsb-lib-1-v2476.library.ucsb.edu.
+87.60.3		PTR	rssh-2476.library.ucsb.edu.			    ;; RSSH server
+93.60.3		PTR	memcached1-2476.library.ucsb.edu.		;; Memcached Server
+108.60.3    PTR proxy-lib-2476-1.library.ucsb.edu.
+122.60.3    PTR proxy-mysql-1-2476.library.ucsb.edu.
+201.60.3    PTR sendmail-relay-2476.library.ucsb.edu.
+204.60.3    PTR lamp1.library.ucsb.edu.
+221.60.3    PTR casper-2476.library.ucsb.edu.
+244.60.3    PTR adrlldap.library.ucsb.edu.
+226.60.3    PTR confluence-2476.library.ucsb.edu.
+213.60.3    PTR lamp2.library.ucsb.edu.
+1.61.3      PTR bind2.library.ucsb.edu.
+7.61.3      PTR bind1.library.ucsb.edu.
+14.61.3     PTR dgheapigee.library.ucsb.edu.
+29.61.3     PTR jenkins2-2476.library.ucsb.edu.
+30.61.3     PTR jenkinswwwd.library.ucsb.edu.
+32.61.3     PTR varnish1.library.ucsb.edu.							;; Varnish cache (1st of HA pair)
+32.61.3     PTR varnish2.library.ucsb.edu.							;; Varnish cache (2nd of HA pair)
+36.61.3     PTR lampstage1.library.ucsb.edu.
+37.61.3     PTR haproxy1-2476.library.ucsb.edu.
+39.61.3     PTR haproxy2-2476.library.ucsb.edu.
+44.61.3     PTR haproxyt1-2476.library.ucsb.edu.
+45.61.3     PTR haproxyt2-2476.library.ucsb.edu.
+46.61.3     PTR ddrupalprod1.library.ucsb.edu.
+47.61.3     PTR ddrupalprod2.library.ucsb.edu.
+48.61.3     PTR ddrupaldev.library.ucsb.edu.
+71.61.3     PTR drupalsolr5.library.ucsb.edu.
+164.61.3    PTR rundeck-2476.library.ucsb.edu.
+248.61.3    PTR prometheusd.library.ucsb.edu.
+7.63.3      PTR openvpn-2476.library.ucsb.edu.
+1.77.3      PTR adrlvarnish.library.ucsb.edu.						;; Varnish cache for ADRL (not production)
+5.80.3      PTR db-percona-1.library.ucsb.edu.
+6.80.3      PTR db-percona-2.library.ucsb.edu.
+7.80.3      PTR db-percona-3.library.ucsb.edu.
+8.80.3      PTR db-percona-restore.library.ucsb.edu.
+9.80.3      PTR db-proxysql-vip.library.ucsb.edu.
+10.80.3     PTR db-proxysql-1.library.ucsb.edu.
+11.80.3     PTR db-proxysql-2.library.ucsb.edu.
+201.100.3   PTR	squid-proxy-2476.library.ucsb.edu.		;; Squid Proxy server
+23.102.3	PTR	haproxydev1-2476.library.ucsb.edu.
+47.102.3	PTR	splunk-2476.library.ucsb.edu.			;; Splunk Logging server
+54.102.3    PTR proxy1-2003.library.ucsb.edu.
+55.102.3    PTR db-mysql1-2476.library.ucsb.edu.
+97.102.3    PTR osol-ai-2003.library.ucsb.edu.
+127.102.3   PTR collections-2003.alexandria.ucsb.edu.
+187.102.3   PTR lamp-prod-1-2003.library.ucsb.edu.
+
+9.103.3     PTR	solr-2-2476.library.ucsb.edu.
+26.103.3 	PTR	netman-2476.library.ucsb.edu.
+35.103.3    PTR stash-2476.library.ucsb.edu.
+
+1.106.3     PTR vm-proxmox1-2003.library.ucsb.edu.
+2.106.3     PTR vm-proxmox2-2003.library.ucsb.edu.
+
+4.110.3     PTR lamp-prod-2-2003.library.ucsb.edu.
+5.110.3     PTR lamp-stage-2-2003.library.ucsb.edu.
+6.110.3     PTR	lamp-prod-leg-1-2476.library.ucsb.edu.	;; LAMP server
+7.110.3     PTR	lamp-prod-3-2476.library.ucsb.edu.		;; LAMP server
+8.110.3     PTR lamp-prod-leg-2-2476.library.ucsb.edu.
+18.110.3    PTR	proxydev-1-2476.library.ucsb.edu.		;; HAProxy Dev Server
+20.110.3    PTR adp1.library.ucsb.edu.
+21.110.3	PTR	adpdev.library.ucsb.edu.				;; American Discography Project (ADP)
+22.110.3    PTR adp2.library.ucsb.edu.
+
+1.112.3     PTR manageandrew-2476.library.ucsb.edu.
+16.112.3    PTR rodc-2476.library.ucsb.edu.
+36.112.3    PTR rodc2-2476.library.ucsb.edu.
+177.112.3   PTR epm-2476.library.ucsb.edu.
+178.112.3   PTR epm2-2476.library.ucsb.edu.
+
+2.114.3     PTR	sawmill-2.library.ucsb.edu.			;; Sawmill server
+
+121.121.3   PTR ezproxy.library.ucsb.edu.
+4.125.3     PTR sw-8543-cisco-3750-2476.library.ucsb.edu.
+5.125.3     PTR sw-annex2-cisco-3750-2476.library.ucsb.edu.
+
+3.140.3     PTR stor-nhdc-rw9-r3-u1-stor3-2476.library.ucsb.edu.
+1.150.3     PTR wlc-active-cisco-5508.library.ucsb.edu.
+1.180.3     PTR repodev1-2476.library.ucsb.edu.
+2.180.3     PTR repostage1-2476.library.ucsb.edu.
+10.180.3    PTR repoprod1-2476.library.ucsb.edu.
+1.201.3     PTR github-2476.library.ucsb.edu.
+2.201.3     PTR gitback.library.ucsb.edu.
+
+1.50.3      PTR packetfence1-2476.library.ucsb.edu.       ;; Squid Proxy, Zabbix
+2.50.3      PTR packetfence2-2476.library.ucsb.edu.       ;; Squid Proxy, Zabbix
+3.50.3      PTR packetfence3-2476.library.ucsb.edu.       ;; Squid Proxy, Zabbix

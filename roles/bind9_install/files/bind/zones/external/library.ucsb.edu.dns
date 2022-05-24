@@ -1,0 +1,289 @@
+$TTL 3h;
+@                       IN  SOA ns1.library.ucsb.edu.  sysadmin.library.ucsb.edu. (
+;;                       YYYYMMDDXX	; YYYY = year, MM = month, DD = day, XX = increment(00-99)
+                         2022040500     ; serial number
+                        	3h          	; refresh
+                        	1h           	; retry
+                        	4w      		; expire
+                        	1h       )      ; minimum TTL
+
+@			IN NS	ns1.library.ucsb.edu.
+@			IN NS	ns2.library.ucsb.edu.
+@                       IN NS   ns1.ucsb.edu.
+@                       IN NS   ns2.ucsb.edu.
+@			A	128.111.87.248
+@                       60      IN      MX      1      aspmx.l.google.com.
+@                       60      IN      MX      5      alt1.aspmx.l.google.com.
+@                       60      IN      MX      5      alt2.aspmx.l.google.com.
+@                       60      IN      MX      10      aspmx2.googlemail.com.
+@                       60      IN      MX      10      aspmx3.googlemail.com.
+
+;;www			78761	CNAME	haproxy.library.ucsb.edu.
+www			60	A	23.185.0.4
+
+_acme-challenge.www.library.ucsb.edu.		360	IN	TXT	"5AswUkgsiZQr6dhsB2f4hHUsZYPMVsneOmmdD1hc-RE"
+_acme-challenge.tl.library.ucsb.edu.		360	IN	TXT	"eg1o9eEZA8IFT7iugTxiL_VI92DZ_ndm3gx-PiXOeGI"
+
+
+
+lists.library.ucsb.edu.	60	IN	MX	10	lists.connect.ucsb.edu.
+lists.library.ucsb.edu.  IN TXT "v=spf1 a mx include:_spf.ucsb.edu ~all"
+
+google._domainkey	IN	TXT	("v=DKIM1; k=rsa; p="
+"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk52UK/XujEZXtTTscJMo7PugBln05JlNEG"
+"LnAk6KQURdOcfnevPiSxi7yszeP/gZE7KhwfhSctPAtQIumIaD8rl4yVd8ySp3ovdR/P2U5TrBx+oj/"
+"ecTvG+wQFTRMRmnrdiAoaAhDinXJb++ytvape6hmip9FGsYEwR9aYtfQ5zFLGbelhv4BmXNVdgOr7JD3"
+"6WKg7/7Z02Yr1u7E2d2INTw6LAKb3Gx/3De2z6FxoK+CITpcbXoeZDfTSI1+LOiWp7P7N2K66kTVUCu/"
+"4WCnEIACHIfnJ786wDL9XUjy6zY1xkUoxL03lCljuJlGPAHxEwxWYdPzlOUsyjbe5IIdQIDAQAB")
+
+
+mqwixxwyyoyl		CNAME	gv-nhwzlibmfjg6jh.dv.googlehosted.com.
+
+
+library.ucsb.edu.   IN TXT "v=spf1 a mx include:_spf.ucsb.edu include:spf-na.exlibrisgroup.com ~all"
+library.ucsb.edu.   IN TXT "atlassian-domain-verification=ZIaUbbkrYS6DgSxHx1eKL1A57BO3OaXGLHygBLZ6xui3OkJM81ApVKLKDlU3EySM"
+library.ucsb.edu.   IN TXT "MS=D7F719CF8E6A69269B750C38B2D2718450464065"
+library.ucsb.edu.   IN TXT "apple-domain-verification=pNUAObZKnm3Mbhau"
+
+_acme-challenge.iiif.library.ucsb.edu.	       360 IN	TXT	"1mDeI36L-cmiJ4TCbAJpOZs8jaiaTIgoVQONa95R0_8"
+_acme-challenge.cantaloupe-1.library.ucsb.edu. 360 IN	TXT	"5WqZBNuHUS2c3P1xEtGVRuL_zBwYywWsdVF27tJfc4w"
+
+
+
+adrl-sandbox                A   128.111.87.107
+iiif-sandbox                A   128.111.87.147
+geoservices-sandbox         A   128.111.87.150
+geoworks-sandbox            A   128.111.87.151
+geoblacklight               A	128.111.87.159
+starlight               CNAME 	haproxy.library.ucsb.edu.
+cantaloupe-1            CNAME   haproxyt.library.ucsb.edu.
+ansibletower            CNAME	haproxy.library.ucsb.edu.
+nginxlb                     A   128.111.87.20
+rancher                 CNAME   nginxlb.library.ucsb.edu.
+arcgis1				A		128.111.87.224
+ares	                    A		128.111.87.115
+aresdev	                    A		128.111.87.245
+atempo				A		128.111.87.27
+building                 CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+casper2                  A		128.111.87.123
+casper                   CNAME	casper2.library.ucsb.edu.
+cemaweb                  CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+classes                  CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+collabsecrets			       CNAME	haproxy.library.ucsb.edu.
+ebla                     A		128.111.87.8
+ulpia                    A		128.111.87.9
+nuzi                     A		128.111.87.10
+dc-stag                  A      128.111.87.58
+dc-prod                  A      128.111.87.59
+dc					A 		128.111.87.117
+					A 		128.111.87.118
+					A 		128.111.87.119
+dc3                      A		128.111.87.119
+dc4                      A 		128.111.87.117
+dc5                      A 		128.111.87.118
+drupalprod                    CNAME	haproxy.library.ucsb.edu.
+drupaldev                     CNAME	haproxy.library.ucsb.edu.
+duodng                        CNAME haproxy.library.ucsb.edu.
+epm                           CNAME	haproxy.library.ucsb.edu.
+epm1                              A	128.111.87.177
+epm2                              A 128.111.87.178
+epm-dev			              CNAME	epm-dev1.library.ucsb.edu.
+epm-dev1		                 A	128.111.87.206
+eset                     CNAME	haproxy.library.ucsb.edu.
+filemaker-2019                    A	128.111.87.168
+filemaker                     CNAME	filemaker-2019.library.ucsb.edu.
+managefilemaker                   A	128.111.97.222
+ftp                      CNAME	ftpd-352.library.ucsb.edu.
+ftpd                     CNAME	ftpd-352.library.ucsb.edu.
+ftpd-352                     A		128.111.87.24
+fridgemonitor                A		128.111.87.211
+gateway                      A		128.111.87.199
+rdpgwbackup		             A		128.111.87.203
+github                       A	128.111.87.167
+git                      CNAME	github.library.ucsb.edu.
+ghe                      CNAME	github.library.ucsb.edu.
+gheapigee                CNAME  haproxy.library.ucsb.edu.
+apigeegithub             CNAME  haproxy.library.ucsb.edu.
+gheapigeeadmin           CNAME  haproxy.library.ucsb.edu.
+jenkins				     CNAME  haproxy.library.ucsb.edu.
+jenkinsucsb			     CNAME  haproxy.library.ucsb.edu.
+ucsbjenkins			     CNAME  haproxy.library.ucsb.edu.
+jenkinswww               CNAME	haproxy.library.ucsb.edu.
+jobs                     CNAME	ucsblibrary.theresumator.com.
+libcal                   CNAME	v2.libcal.com.
+kms                         A	128.111.87.46
+logserver                CNAME	splunk-352.library.ucsb.edu.
+logs                     CNAME	splunk-352.library.ucsb.edu.
+logs1-352                    A	128.111.87.38
+graylog                  CNAME	logs1-352.library.ucsb.edu.
+graylog2                 CNAME	logs1-352.library.ucsb.edu.
+lm-server                         A	128.111.87.51
+esri                            CNAME lm-server.library.ucsb.edu.
+maxqda                          CNAME lm-server.library.ucsb.edu.
+ns1                      A		128.111.87.30
+ns2                      A		128.111.87.44
+svmwindows                 A	128.111.87.132
+			            A	128.111.87.133
+winshares                  A   128.111.87.95
+haproxy                      A	128.111.87.248
+haproxy1                     A  128.111.87.249
+haproxy2                     A  128.111.87.250
+haproxyt                     A  128.111.87.12
+haproxyt1                    A  128.111.87.13
+haproxyt2                    A  128.111.87.14
+proxy-v                  CNAME 	proxy1-352.library.ucsb.edu.
+proxy-lib                    A	128.111.87.34
+proxy1-352                   A	128.111.87.54
+proxy1                   CNAME	proxy1-352.library.ucsb.edu.
+proxy-lib-352-1		       CNAME	proxy-lib.library.ucsb.edu.
+proxy-lib-352            CNAME	proxy-lib.library.ucsb.edu.
+
+lb-haproxy-legacy-001        A  128.111.87.17
+
+adp                      CNAME	haproxy.library.ucsb.edu.
+adpprod1                 CNAME	haproxy.library.ucsb.edu.
+adpprod2                 CNAME	haproxy.library.ucsb.edu.
+adpdev                   CNAME  haproxy.library.ucsb.edu.
+adpdevdb                 CNAME  haproxyt.library.ucsb.edu.
+victor                   CNAME 	haproxy.library.ucsb.edu.
+victorledgers            CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+arsc                     CNAME	filemaker-2019.library.ucsb.edu.
+truesound                CNAME  haproxy.library.ucsb.edu.
+lobero                   CNAME  haproxy.library.ucsb.edu.
+arc                      CNAME  haproxy.library.ucsb.edu.
+truesoundstage           CNAME  haproxy.library.ucsb.edu.
+loberostage              CNAME  haproxy.library.ucsb.edu.
+arcstage                 CNAME  haproxy.library.ucsb.edu.
+arscstage                CNAME  haproxy.library.ucsb.edu.
+lauc                     CNAME	live-lauc-library-ucsb-edu-v01.pantheonsite.io.
+collman                  CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+misc                     CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+mil                      CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+mil-db                   CNAME  haproxy1.library.ucsb.edu.
+db-mil                   CNAME  haproxy1.library.ucsb.edu.
+nico                     CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+nico-server              CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+thoreau                  CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+istl                     CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+merritt                  CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+ucsbreads	               CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+rundeck                  CNAME	haproxy.library.ucsb.edu.
+rundeck2018              CNAME	haproxy.library.ucsb.edu.
+libwsus                   A		128.111.87.60
+libr-gauchoprt			          A	128.111.87.182
+pcut-test			              A	128.111.87.183
+researchspecial		CNAME	ucsb.aeon.atlas-sys.com.
+reset                    CNAME	haproxy.library.ucsb.edu.
+rssh                     CNAME	rssh-352.library.ucsb.edu.
+rssh-352                 A		128.111.87.50
+alma-sftp                CNAME	rssh-352.library.ucsb.edu.
+search                   CNAME	ucsb.primo.exlibrisgroup.com.
+sendmail-relay-352       A	128.111.87.124
+sendmail-relay           CNAME	sendmail-relay-352.library.ucsb.edu.
+stash                    CNAME	haproxy.library.ucsb.edu.
+thoreau-remote           CNAME	rssh-352.library.ucsb.edu.
+akebono                  CNAME  haproxy.library.ucsb.edu.
+splunk-352               A		128.111.87.48
+splunk                   CNAME	splunk-352.library.ucsb.edu.
+sshgw-352                A		128.111.87.41
+ssh                      CNAME   	sshgw-352.library.ucsb.edu.
+sshgw                    CNAME   	sshgw-352.library.ucsb.edu.
+status                   CNAME  wdc4kd3zsrn9.stspg-customer.com.
+stream2x						A			128.111.87.19
+stream						CNAME			stream2x.library.ucsb.edu.
+tl                       A         23.185.0.4
+ucsb-lib-openvpn-001-v352          A         128.111.87.80
+vpn-admin                          CNAME     ucsb-lib-openvpn-001-v352.library.ucsb.edu.
+openvpn                     CNAME   openvpn2019.library.ucsb.edu.
+vpn                  		CNAME	openvpn2019.library.ucsb.edu.
+openvpn2019                     A   128.111.87.71
+openvpn-352                 CNAME   openvpn2019.library.ucsb.edu.
+wiki                     CNAME	haproxy.library.ucsb.edu.
+zabbix                   CNAME	haproxyt.library.ucsb.edu.
+we-remember-them         CNAME 	lb-haproxy-legacy-001.library.ucsb.edu.
+blackfeminism            CNAME	lb-haproxy-legacy-001.library.ucsb.edu.
+bops-remote	             A		128.111.97.211
+
+$ORIGIN library.ucsb.edu.
+proxy			A	128.111.121.42
+guides                   CNAME	v2.libguides.com.
+
+$ORIGIN proxy.library.ucsb.edu.
+*			    A	128.111.121.42
+
+$ORIGIN proxytmp.library.ucsb.edu.
+*			    A	128.111.87.159
+
+$ORIGIN victor.library.ucsb.edu.
+*                                  CNAME	haproxy.library.ucsb.edu.
+
+$ORIGIN digital.library.ucsb.edu.
+@    IN	   NS          ns-1553.awsdns-02.co.uk.
+     IN    NS          ns-236.awsdns-29.com.
+     IN    NS          ns-1002.awsdns-61.net.
+     IN    NS          ns-1378.awsdns-44.org.
+
+$ORIGIN dld.library.ucsb.edu.
+@    IN    NS          ns-1447.awsdns-52.org.
+     IN    NS          ns-290.awsdns-36.com.
+     IN    NS          ns-1923.awsdns-48.co.uk.
+     IN    NS          ns-739.awsdns-28.net.
+
+$ORIGIN geodata.library.ucsb.edu.
+@    IN    NS          ns-1907.awsdns-46.co.uk.
+     IN    NS          ns-750.awsdns-29.net.
+     IN    NS          ns-76.awsdns-09.com.
+     IN    NS          ns-1126.awsdns-12.org.
+
+$ORIGIN cylinders.library.ucsb.edu.
+@    IN    NS          ns-1864.awsdns-41.co.uk.
+     IN    NS          ns-681.awsdns-21.net.
+     IN    NS          ns-12.awsdns-01.com.
+     IN    NS          ns-1216.awsdns-24.org.
+
+$ORIGIN library.ucsb.edu.
+bastion-ucsb-lib-1					A	128.111.87.42
+proton-os						A	128.111.87.228
+_1a4ae0fdc09a2579501cceb77eff2835			CNAME	_cecf8d1aea6148c752cdaeb6d9e6e16a.acm-validations.aws.
+wiki-aws						CNAME	atlas-LoadB-BXUKAILN7WF4-118553238.us-west-2.elb.amazonaws.com.
+help-aws						CNAME	atlas-LoadB-VEI1IHCQPMZA-1116913365.us-west-2.elb.amazonaws.com.
+d42							CNAME	ec2-54-213-10-104.us-west-2.compute.amazonaws.com.
+device42						CNAME   ec2-54-213-10-104.us-west-2.compute.amazonaws.com.
+ucsb-lib-lm-collector-1					A	128.111.87.247
+aws-datasync-agent-1					A	128.111.87.246
+
+jump-ops-01						A 	128.111.87.190
+jump-ops-02						A 	128.111.87.191
+
+chronopolis-dev-01					A	128.111.87.238
+chronopolis-bagging					CNAME	chronopolis-dev-01.library.ucsb.edu.
+
+3ettaxfr6s43fvjdkithnbm5wpmcvtkb._domainkey   CNAME 3ettaxfr6s43fvjdkithnbm5wpmcvtkb.dkim.amazonses.com.
+mn7ygtznogdgjohvc27asq35xqp5dxhc._domainkey   CNAME mn7ygtznogdgjohvc27asq35xqp5dxhc.dkim.amazonses.com.
+l3vffdmeidbrtg2rgh5ralxr4yxtpfkz._domainkey   CNAME l3vffdmeidbrtg2rgh5ralxr4yxtpfkz.dkim.amazonses.com.
+
+
+lamp-test						A	128.111.87.192
+;;							A	128.111.87.193
+;;							A	128.111.87.194
+;;							A	128.111.87.195
+
+assets							A	128.111.87.192
+
+$ORIGIN ops.library.ucsb.edu.
+@	IN	NS	ns-970.awsdns-57.net.
+	IN	NS	ns-1842.awsdns-38.co.uk.
+	IN	NS	ns-68.awsdns-08.com.
+	IN	NS	ns-1357.awsdns-41.org.
+
+$ORIGIN spotlight.library.ucsb.edu.
+@	IN	NS	ns-1437.awsdns-51.org.
+	IN	NS	ns-1706.awsdns-21.co.uk.
+	IN	NS	ns-817.awsdns-38.net.
+	IN	NS	ns-7.awsdns-00.com.
+
+$ORIGIN spotlight-stage.library.ucsb.edu.
+@	IN	NS	ns-588.awsdns-09.net.
+	IN	NS	ns-1042.awsdns-02.org.
+	IN	NS	ns-1754.awsdns-27.co.uk.
+	IN	NS	ns-171.awsdns-21.com.

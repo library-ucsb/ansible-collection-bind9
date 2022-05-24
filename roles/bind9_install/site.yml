@@ -1,0 +1,70 @@
+---
+- name: bind servers
+  hosts: bind_servers
+  become: true
+
+  environment:
+    http_proxy: http://10.11.100.201:3128
+    https_proxy: http://10.11.100.201:3128
+  
+  vars_files:
+    - "/home/josh/docs/secrets/work/ucsb/ansible-user-ansible-deploy-vault.yml"
+    #- "/home/josh/docs/secrets/work/ucsb/ansible-user-vault-josh.yml"
+
+  roles:
+
+    - role: library.core.yum_config
+      tags:
+        - yum
+      when: ansible_facts['os_family'] | lower == 'redhat'
+
+    - role: library.core.epel
+      tags:
+        - yum
+      when: ansible_facts['os_family'] | lower == 'redhat'
+
+    - role: singleplatform-eng.users    
+      tags: 
+        - users
+
+    - role: ahuffman.sudoers
+      tags: 
+        - sudo
+        - sudoers
+
+    - role: willshersystems.sshd
+      tags: 
+        - sshd
+        - ssh
+
+    - role: geerlingguy.ntp
+      tags: 
+        - ntp
+        - ntpd
+
+    - role: sbaerlocher.snmp
+      tags: 
+        - snmp
+        - snmpd
+        - never # <<<< broken at the moment, so this turns it off.
+
+    - role: geerlingguy.firewall
+      tags: 
+        - firewall
+        - firewalld
+        - iptables    
+
+    - role: geerlingguy.pip
+      tags:
+        - pip
+
+    - role: geerlingguy.docker
+      tags: 
+        - docker
+
+    - name: systemli.bind9
+      tags:
+        - dns
+        - bind
+        - bind9
+        - named

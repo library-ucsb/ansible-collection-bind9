@@ -1,0 +1,95 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+{% if bind9_masters|default() %}
+{%   for master in bind9_masters %}
+masters {{ master.name }} {
+{%     for addr in master.addresses %}
+    {{ addr }};
+{%     endfor %}
+};
+{%   endfor %}
+{% endif %}
+{% if bind9_masters_extra|default() %}
+{%   for master in bind9_masters_extra %}
+masters {{ master.name }} {
+{%     for addr in master.addresses %}
+    {{ addr }};
+{%     endfor %}
+};
+{%   endfor %}
+{% endif %}
+
+{% if bind9_statistics_enabled %}
+statistics-channels {
+  inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
+};
+{% endif %}
+
+// The following zones are managed by this DNS Server //
+{% for zone in (bind9_zones_static + bind9_zones_dynamic)|sort(attribute='name') %}
+{% set zone_type = zone.type|default(bind9_zone_type|default('master')) %}
+zone "{{ zone.name }}" {
+    type {{ zone_type }};
+{%   if zone_type == 'master' %}
+    file "/etc/bind/zones/db.{{ zone.name }}";
+{%     if bind9_notify_explicit|default() %}
+    notify explicit;
+{%     elif zone.notify|default(true) %}
+    notify yes;
+{%     endif %}
+{%     if  zone.allow_transfer | length > 0 %}
+    allow-transfer { {{ zone.allow_transfer|join('; ') }}; };
+{%     endif %}
+{%     if zone.also_notify is defined and zone.also_notify | length > 0 %}
+    also-notify { {{ zone.also_notify|join('; ') }}; };
+{%     endif %}
+    allow-query { any; };
+
+{%     if (bind9_dnssec|default() or zone.dnssec|default()) and zone.dnssec|default(bind9_dnssec_zones_default_enabled) %}
+    auto-dnssec maintain;
+    inline-signing yes;
+{%     endif %}
+{%     if zone.update_policy_grant|default() %}
+    update-policy {
+        grant {{ zone.name }}_ddns_update {{ zone.update_policy_grant }};
+    };
+{%     endif %}
+{%   elif zone_type == 'slave' %}
+    file "/var/cache/bind/db.{{ zone.name }}";
+{%     if zone.masters|default() or bind9_masters|default() %}
+    notify no;
+    masters {
+{%       if zone.masters|default() %}
+{%         for master in zone.masters %}
+        {{ master }};
+{%         endfor %}
+{%       elif bind9_masters|default() %}
+{%         for master in bind9_masters %}
+        {{ master.name }};
+{%         endfor %}
+{%       endif %}
+    };
+{%     endif %}
+{%     if zone.also_notify is defined and zone.also_notify | length > 0 %}
+    also-notify { {{ zone.also_notify|join('; ') }}; };
+{%     endif %}
+{%     if zone.allow_notify is defined and zone.allow_notify | length > 0 %}
+    allow-notify { {{ zone.allow_notify | join('; ') }}; };
+{%     endif %}
+{%   else %}
+{%      if zone_type == 'forward' %}
+    forwarders {
+{%         for fwd in zone.forwarders %}
+        {{ fwd }}; 
+{%         endfor %}
+   }; 
+{%     endif %}
+{%   endif %}
+};
+{% endfor %}

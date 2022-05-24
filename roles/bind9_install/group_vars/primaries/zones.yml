@@ -1,0 +1,948 @@
+zones_library_domains:
+  - name: library.ucsb.edu
+    reverse: false
+    zone_type: master
+    default_ttl: 600
+    serial: 2022040500
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+    - ns1.library.ucsb.edu
+    - ns2.library.ucsb.edu
+    - ns1.ucsb.edu
+    - ns2.ucsb.edu
+
+    a_records:
+    - 128.111.87.248
+
+    mx_records:
+    - name: aspmx.l.google.com
+      priority: 1
+    - name: alt1.aspmx.l.google.com
+      priority: 5
+    - name: alt2.aspmx.l.google.com
+      priority: 5
+    - name: aspmx2.googlemail.com
+      priority: 10
+    - name: aspmx3.googlemail.com
+      priority: 10
+  
+    subdomain_delegations:
+      - name: ops.library.ucsb.edu.
+        nameservers:
+          - ns-970.awsdns-57.net.
+          - ns-1842.awsdns-38.co.uk.
+          - ns-68.awsdns-08.com.
+          - ns-1357.awsdns-41.org.
+
+      - name: spotlight.library.ucsb.edu.
+        nameservers:
+          - ns-1437.awsdns-51.org.
+          - ns-1706.awsdns-21.co.uk.
+          - ns-817.awsdns-38.net.
+          - ns-7.awsdns-00.com.
+
+      - name: spotlight-stage.library.ucsb.edu.
+        nameservers:
+          - ns-588.awsdns-09.net.
+          - ns-1042.awsdns-02.org.
+          - ns-1754.awsdns-27.co.uk.
+          - ns-171.awsdns-21.com.
+
+      - name: digital.library.ucsb.edu.
+        nameservers:
+          - ns-1553.awsdns-02.co.uk.
+          - ns-236.awsdns-29.com.
+          - ns-1002.awsdns-61.net.
+          - ns-1378.awsdns-44.org.
+
+      - name: dld.library.ucsb.edu.
+        nameservers:
+          - ns-1447.awsdns-52.org.
+          - ns-290.awsdns-36.com.
+          - ns-1923.awsdns-48.co.uk.
+          - ns-739.awsdns-28.net.
+
+      - name: geodata.library.ucsb.edu.
+        nameservers:
+          - ns-1907.awsdns-46.co.uk.
+          - ns-750.awsdns-29.net.
+          - ns-76.awsdns-09.com.
+          - ns-1126.awsdns-12.org.
+
+      - name: cylinders.library.ucsb.edu.
+        nameservers:
+          - ns-1864.awsdns-41.co.uk.
+          - ns-681.awsdns-21.net.
+          - ns-12.awsdns-01.com.
+          - ns-1216.awsdns-24.org.
+            
+      - name: proxy.library.ucsb.edu.
+        rrs:
+          - label: "*"
+            type: A
+            rdata: 128.111.87.42
+
+      - name: proxytmp.library.ucsb.edu.
+        rrs:
+          - label: "*"
+            type: A
+            rdata: 128.111.87.159
+
+      - name: victor.library.ucsb.edu.
+        rrs:
+          - label: "*"
+            type: CNAME
+            rdata: haproxy.library.ucsb.edu.
+
+  # RR values are either relative to the zone, either with a final dot when outside.
+    rrs:
+      - { label: "www", type: A, rdata: 23.185.0.4 }
+      - { label: "adrl-sandbox", type: A, rdata: 128.111.87.107 }
+      - { label: "iiif-sandbox", type: A, rdata: 128.111.87.147 }
+      - { label: "geoservices-sandbox", type: A, rdata: 128.111.87.150 }
+      - { label: "geoworks-sandbox", type: A, rdata: 128.111.87.151 }
+      - { label: "geoblacklight", type: A, rdata: 128.111.87.159 }
+      - { label: "nginxlb", type: A, rdata: 128.111.87.20 }
+      - { label: "casper2", type: A, rdata: 128.111.87.123 }
+      - { label: "arcgis1", type: A, rdata: 128.111.87.224 }
+      - { label: "ares", type: A, rdata: 128.111.87.115 }
+      - { label: "aresdev", type: A, rdata: 128.111.87.245 }
+      - { label: "atempo", type: A, rdata: 128.111.87.27 }
+      - { label: "ebla", type: A, rdata: 128.111.87.8 }
+      - { label: "ulpia", type: A, rdata: 128.111.87.9 }
+      - { label: "nuzi", type: A, rdata: 128.111.87.10 }
+      - { label: "dc-stag", type: A, rdata: 128.111.87.58 }
+      - { label: "dc-prod", type: A, rdata: 128.111.87.59 }
+      - { label: "dc", type: A, rdata: 128.111.87.117 }
+      - { label: "dc", type: A, rdata: 128.111.87.118 }
+      - { label: "dc", type: A, rdata: 128.111.87.119 }
+      - { label: "dc3", type: A, rdata: 128.111.87.119 }
+      - { label: "dc4", type: A, rdata: 128.111.87.117 }
+      - { label: "dc5", type: A, rdata: 128.111.87.118 }
+      - { label: "epm1", type: A, rdata: 128.111.87.177 }
+      - { label: "epm2", type: A, rdata: 128.111.87.178 }
+      - { label: "epm-dev1", type: A, rdata: 128.111.87.206 }
+      - { label: "filemaker-2019", type: A, rdata: 128.111.87.168 }
+      - { label: "managefilemaker", type: A, rdata: 128.111.97.222 }
+      - { label: "ftpd-352", type: A, rdata: 128.111.87.24 }
+      - { label: "fridgemonitor", type: A, rdata: 128.111.87.211 }
+      - { label: "gateway", type: A, rdata: 128.111.87.199 }
+      - { label: "rdpgwbackup", type: A, rdata: 128.111.87.203 }
+      - { label: "github", type: A, rdata: 128.111.87.167 }
+      - { label: "kms", type: A, rdata: 128.111.87.46 }
+      - { label: "logs1-352", type: A, rdata: 128.111.87.38 }
+      - { label: "ns1", type: A, rdata: 128.111.87.30 }
+      - { label: "ns2", type: A, rdata: 128.111.87.44 }
+      - { label: "svmwindows", type: A, rdata: 128.111.87.132 }
+      - { label: "svmwindows", type: A, rdata: 128.111.87.133 }
+      - { label: "winshares", type: A, rdata: 128.111.87.95 }
+      - { label: "haproxy", type: A, rdata: 128.111.87.248 }
+      - { label: "haproxy1", type: A, rdata: 128.111.87.249 }
+      - { label: "haproxy2", type: A, rdata: 128.111.87.250 }
+      - { label: "haproxyt", type: A, rdata: 128.111.87.12 }
+      - { label: "haproxyt1", type: A, rdata: 128.111.87.13 }
+      - { label: "haproxyt2", type: A, rdata: 128.111.87.14 }
+      - { label: "lm-server", type: A, rdata: 128.111.87.51 }
+      - { label: "proxy-lib", type: A, rdata: 128.111.87.34 }
+      - { label: "proxy1-352", type: A, rdata: 128.111.87.54 }
+      - { label: "lb-haproxy-legacy-001", type: A, rdata: 128.111.87.17 }
+      - { label: "libwsus", type: A, rdata: 128.111.87.60 }
+      - { label: "libr-gauchoprt", type: A, rdata: 128.111.87.182 }
+      - { label: "pcut-test", type: A, rdata: 128.111.87.183 }
+      - { label: "rssh-352", type: A, rdata: 128.111.87.50 }
+      - { label: "sendmail-relay-352", type: A, rdata: 128.111.87.124 }
+      - { label: "splunk-352", type: A, rdata: 128.111.87.48 }
+      - { label: "sshgw-352", type: A, rdata: 128.111.87.41 }
+      - { label: "stream2x", type: A, rdata: 128.111.87.19 }
+      - { label: "tl", type: A, rdata: 23.185.0.4 }
+      - { label: "ucsb-lib-openvpn-001-v352", type: A, rdata: 128.111.87.80 }
+      - { label: "openvpn2019", type: A, rdata: 128.111.87.71 }
+      - { label: "bops-remote", type: A, rdata: 128.111.97.211 }
+      - { label: "proxy", type: A, rdata: 128.111.121.42 }
+      - { label: "ucsb-lib-lm-collector-1", type: A, rdata: 128.111.87.247 }
+      - { label: "aws-datasync-agent-1", type: A, rdata: 128.111.87.246 }
+      - { label: "jump-ops-01", type: A, rdata: 128.111.87.190 }
+      - { label: "jump-ops-02", type: A, rdata: 128.111.87.191 }
+      - { label: "chronopolis-dev-01", type: A, rdata: 128.111.87.238 }
+      - { label: "bastion-ucsb-lib-1", type: A, rdata: 128.111.87.42 }
+      - { label: "proton-os", type: A, rdata: 128.111.87.228 }
+      - { label: "lamp-test", type: A, rdata: 128.111.87.192 }
+      - { label: "assets", type: A, rdata: 128.111.87.192 }
+      - { label: "starlight", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "cantaloupe-1", type: CNAME, rdata: haproxyt.library.ucsb.edu. }
+      - { label: "ansibletower", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "rancher", type: CNAME, rdata: nginxlb.library.ucsb.edu. }
+      - { label: "building", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "casper", type: CNAME, rdata: casper2.library.ucsb.edu. }
+      - { label: "cemaweb", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "classes", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "collabsecrets", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "drupalprod", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "drupaldev", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "duodng", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "epm", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "epm-dev", type: CNAME, rdata: epm-dev1.library.ucsb.edu. }
+      - { label: "eset", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "filemaker", type: CNAME, rdata: filemaker-2019.library.ucsb.edu. }
+      - { label: "ftp", type: CNAME, rdata: ftpd-352.library.ucsb.edu. }
+      - { label: "ftpd", type: CNAME, rdata: ftpd-352.library.ucsb.edu. }
+      - { label: "git", type: CNAME, rdata: github.library.ucsb.edu. }
+      - { label: "ghe", type: CNAME, rdata: github.library.ucsb.edu. }
+      - { label: "gheapigee", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "apigeegithub", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "gheapigeeadmin", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "jenkins", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "jenkinsucsb", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "ucsbjenkins", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "jenkinswww", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "jobs", type: CNAME, rdata: ucsblibrary.theresumator.com. }
+      - { label: "libcal", type: CNAME, rdata: v2.libcal.com. }
+      - { label: "logserver", type: CNAME, rdata: splunk-352.library.ucsb.edu. }
+      - { label: "logs", type: CNAME, rdata: splunk-352.library.ucsb.edu. }
+      - { label: "graylog", type: CNAME, rdata: logs1-352.library.ucsb.edu. }
+      - { label: "graylog2", type: CNAME, rdata: logs1-352.library.ucsb.edu. }
+      - { label: "esri", type: CNAME, rdata: lm-server.library.ucsb.edu. }
+      - { label: "maxqda", type: CNAME, rdata: lm-server.library.ucsb.edu. }
+      - { label: "proxy-v", type: CNAME, rdata: proxy1-352.library.ucsb.edu. }
+      - { label: "proxy1", type: CNAME, rdata: proxy1-352.library.ucsb.edu. }
+      - { label: "proxy-lib-352-1", type: CNAME, rdata: proxy-lib.library.ucsb.edu. }
+      - { label: "proxy-lib-352", type: CNAME, rdata: proxy-lib.library.ucsb.edu. }
+      - { label: "adp", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "adpprod1", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "adpprod2", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "adpdev", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "adpdevdb", type: CNAME, rdata: haproxyt.library.ucsb.edu. }
+      - { label: "victor", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "victorledgers", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "arsc", type: CNAME, rdata: filemaker-2019.library.ucsb.edu. }
+      - { label: "truesound", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "lobero", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "arc", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "truesoundstage", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "loberostage", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "arcstage", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "arscstage", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "lauc", type: CNAME, rdata: live-lauc-library-ucsb-edu-v01.pantheonsite.io. }
+      - { label: "collman", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "misc", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "mil", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "mil-db", type: CNAME, rdata: haproxy1.library.ucsb.edu. }
+      - { label: "db-mil", type: CNAME, rdata: haproxy1.library.ucsb.edu. }
+      - { label: "nico", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "nico-server", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "thoreau", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "istl", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "merritt", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "ucsbreads", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "rundeck", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "rundeck2018", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "researchspecial", type: CNAME, rdata: ucsb.aeon.atlas-sys.com. }
+      - { label: "reset", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "rssh", type: CNAME, rdata: rssh-352.library.ucsb.edu. }
+      - { label: "alma-sftp", type: CNAME, rdata: rssh-352.library.ucsb.edu. }
+      - { label: "search", type: CNAME, rdata: ucsb.primo.exlibrisgroup.com. }
+      - { label: "sendmail-relay", type: CNAME, rdata: sendmail-relay-352.library.ucsb.edu. }
+      - { label: "stash", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "thoreau-remote", type: CNAME, rdata: rssh-352.library.ucsb.edu. }
+      - { label: "akebono", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "splunk", type: CNAME, rdata: splunk-352.library.ucsb.edu. }
+      - { label: "ssh", type: CNAME, rdata: sshgw-352.library.ucsb.edu. }
+      - { label: "sshgw", type: CNAME, rdata: sshgw-352.library.ucsb.edu. }
+      - { label: "status", type: CNAME, rdata: wdc4kd3zsrn9.stspg-customer.com. }
+      - { label: "stream", type: CNAME, rdata: stream2x.library.ucsb.edu. }
+      - { label: "vpn-admin", type: CNAME, rdata: ucsb-lib-openvpn-001-v352.library.ucsb.edu. }
+      - { label: "openvpn", type: CNAME, rdata: openvpn2019.library.ucsb.edu. }
+      - { label: "vpn", type: CNAME, rdata: openvpn2019.library.ucsb.edu. }
+      - { label: "openvpn-352", type: CNAME, rdata: openvpn2019.library.ucsb.edu. }
+      - { label: "wiki", type: CNAME, rdata: haproxy.library.ucsb.edu. }
+      - { label: "zabbix", type: CNAME, rdata: haproxyt.library.ucsb.edu. }
+      - { label: "we-remember-them", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "blackfeminism", type: CNAME, rdata: lb-haproxy-legacy-001.library.ucsb.edu. }
+      - { label: "guides", type: CNAME, rdata: v2.libguides.com. }
+      - { label: "_1a4ae0fdc09a2579501cceb77eff2835", type: CNAME, rdata: _cecf8d1aea6148c752cdaeb6d9e6e16a.acm-validations.aws. }
+      - { label: "wiki-aws", type: CNAME, rdata: atlas-LoadB-BXUKAILN7WF4-118553238.us-west-2.elb.amazonaws.com. }
+      - { label: "help-aws", type: CNAME, rdata: atlas-LoadB-VEI1IHCQPMZA-1116913365.us-west-2.elb.amazonaws.com. }
+      - { label: "d42", type: CNAME, rdata: ec2-54-213-10-104.us-west-2.compute.amazonaws.com. }
+      - { label: "device42", type: CNAME, rdata: ec2-54-213-10-104.us-west-2.compute.amazonaws.com. }
+      - { label: "chronopolis-bagging", type: CNAME, rdata: chronopolis-dev-01.library.ucsb.edu. }
+      - { label: "3ettaxfr6s43fvjdkithnbm5wpmcvtkb._domainkey", type: CNAME, rdata: 3ettaxfr6s43fvjdkithnbm5wpmcvtkb.dkim.amazonses.com. }
+      - { label: "mn7ygtznogdgjohvc27asq35xqp5dxhc._domainkey", type: CNAME, rdata: mn7ygtznogdgjohvc27asq35xqp5dxhc.dkim.amazonses.com. }
+      - { label: "l3vffdmeidbrtg2rgh5ralxr4yxtpfkz._domainkey", type: CNAME, rdata: l3vffdmeidbrtg2rgh5ralxr4yxtpfkz.dkim.amazonses.com. }
+      - { label: "mqwixxwyyoyl", type: CNAME, rdata: gv-nhwzlibmfjg6jh.dv.googlehosted.com. }
+        
+      - label: _acme-challenge.www.library.ucsb.edu.
+        type: TXT
+        ttl: 360
+        rdata: "5AswUkgsiZQr6dhsB2f4hHUsZYPMVsneOmmdD1hc-RE"
+  
+      - label: _acme-challenge.tl.library.ucsb.edu.
+        ttl: 360
+        type: TXT
+        rdata: "eg1o9eEZA8IFT7iugTxiL_VI92DZ_ndm3gx-PiXOeGI"
+  
+      - label: lists.library.ucsb.edu.
+        ttl: 60
+        type: MX 
+        rdata: 10 lists.connect.ucsb.edu.
+  
+      - label: lists.library.ucsb.edu.
+        type: TXT 
+        rdata: "v=spf1 a mx include:_spf.ucsb.edu ~all"
+      
+      #- label: google._domainkey
+      #  type: TXT
+      #  rdata: ("v=DKIM1; k=rsa; p="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk52UK/XujEZXtTTscJMo7PugBln05JlNEGLnAk6KQURdOcfnevPiSxi7yszeP/gZE7KhwfhSctPAtQIumIaD8rl4yVd8ySp3ovdR/P2U5TrBx+oj/ecTvG+wQFTRMRmnrdiAoaAhDinXJb++ytvape6hmip9FGsYEwR9aYtfQ5zFLGbelhv4BmXNVdgOr7JD36WKg7/7Z02Yr1u7E2d2INTw6LAKb3Gx/3De2z6FxoK+CITpcbXoeZDfTSI1+LOiWp7P7N2K66kTVUCu/4WCnEIACHIfnJ786wDL9XUjy6zY1xkUoxL03lCljuJlGPAHxEwxWYdPzlOUsyjbe5IIdQIDAQAB")
+  
+      - label: library.ucsb.edu.
+        type: TXT 
+        rdata: "v=spf1 a mx include:_spf.ucsb.edu include:spf-na.exlibrisgroup.com ~all"
+  
+      - label: library.ucsb.edu.
+        type: TXT 
+        rdata: "atlassian-domain-verification=ZIaUbbkrYS6DgSxHx1eKL1A57BO3OaXGLHygBLZ6xui3OkJM81ApVKLKDlU3EySM"
+  
+      - label: library.ucsb.edu.
+        type: TXT 
+        rdata: "MS=D7F719CF8E6A69269B750C38B2D2718450464065"
+  
+      - label: library.ucsb.edu.
+        type: TXT 
+        rdata: "apple-domain-verification=pNUAObZKnm3Mbhau"
+  
+      - label: _acme-challenge.iiif.library.ucsb.edu.	       
+        ttl: 360
+        type: TXT	
+        rdata: "1mDeI36L-cmiJ4TCbAJpOZs8jaiaTIgoVQONa95R0_8"
+  
+      - label: _acme-challenge.cantaloupe-1.library.ucsb.edu. 
+        ttl: 360
+        type: TXT	
+        rdata: "5WqZBNuHUS2c3P1xEtGVRuL_zBwYywWsdVF27tJfc4w"
+  
+  - name: 87.111.128.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2021100100
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+    - ns1.library.ucsb.edu
+    - ns2.library.ucsb.edu
+    - ns1.ucsb.edu
+    - ns2.ucsb.edu
+  
+    rrs:
+      - { label: "8", type: PTR, rdata:	ebla.library.ucsb.edu. }
+      - { label: "9", type: PTR, rdata: ulpia.library.ucsb.edu. }
+      - { label: "10", type: PTR, rdata: nuzi.library.ucsb.edu. }
+      - { label: "13", type: PTR, rdata: haproxyt1.library.ucsb.edu. }
+      - { label: "14", type: PTR, rdata: haproxyt2.library.ucsb.edu.  }
+      - { label: "17", type: PTR, rdata: adrl-demo.library.ucsb.edu. }
+      - { label: "19", type: PTR, rdata: stream2x.library.ucsb.edu. }
+      - { label: "20", type: PTR, rdata: nginxlb.library.ucsb.edu. }
+      - { label: "23", type: PTR, rdata: stash-352.library.ucsb.edu. }
+      - { label: "24", type: PTR, rdata: ftpd-352.library.ucsb.edu. }
+      - { label: "27", type: PTR, rdata: atempo.library.ucsb.edu. }
+      - { label: "30", type: PTR, rdata: ns1.library.ucsb.edu. }
+      - { label: "33", type: PTR, rdata: proxy-v.library.ucsb.edu. }
+      - { label: "34", type: PTR, rdata: proxy-lib.library.ucsb.edu. }
+      - { label: "38", type: PTR, rdata: logs1-352.library.ucsb.edu. }
+      - { label: "41", type: PTR, rdata: sshgw-352.library.ucsb.edu. }
+      - { label: "42", type: PTR, rdata: bastion-ucsb-lib-1.library.ucsb.edu. }
+      - { label: "44", type: PTR, rdata: ns2.library.ucsb.edu. }
+      - { label: "46", type: PTR, rdata: kms.library.ucsb.edu. }
+      - { label: "48", type: PTR, rdata: splunk-352.library.ucsb.edu. }
+      - { label: "50", type: PTR, rdata: rssh-352.library.ucsb.edu. }
+      - { label: "51", type: PTR, rdata: lm-server.library.ucsb.edu. }
+      - { label: "54", type: PTR, rdata: proxy1-352.library.ucsb.edu. }
+      - { label: "58", type: PTR, rdata: dc-stag.library.ucsb.edu. }
+      - { label: "59", type: PTR, rdata: dc-prod.library.ucsb.edu. }
+      - { label: "60", type: PTR, rdata: libwsus.library.ucsb.edu. }
+      - { label: "71", type: PTR, rdata: openvpn2019.library.ucsb.edu. }
+      - { label: "80", type: PTR, rdata: ucsb-lib-openvpn-001-v352.library.ucsb.edu. }
+      - { label: "94", type: PTR, rdata: proxy2-352.library.ucsb.edu. }
+      - { label: "95", type: PTR, rdata: winshares.library.ucsb.edu. }
+      - { label: "107", type: PTR, rdata:	adrl-sandbox.library.ucsb.edu. }
+      - { label: "115", type: PTR, rdata:	ares.library.ucsb.edu. }
+      - { label: "117", type: PTR, rdata:	dc4.library.ucsb.edu. }
+      - { label: "118", type: PTR, rdata:	dc5.library.ucsb.edu. }
+      - { label: "119", type: PTR, rdata:	dc3.library.ucsb.edu. }
+      - { label: "123", type: PTR, rdata:	casper2.library.ucsb.edu. }
+      - { label: "124", type: PTR, rdata:	sendmail-relay-352.library.ucsb.edu. }
+      - { label: "128", type: PTR, rdata:	collections-2.alexandria.ucsb.edu. }
+      - { label: "132", type: PTR, rdata:	netapp1a.library.ucsb.edu. }
+      - { label: "133", type: PTR, rdata:	netapp1b.library.ucsb.edu. }
+      - { label: "145", type: PTR, rdata:	coll02z3.alexandria.ucsb.edu. }
+      - { label: "147", type: PTR, rdata:	iiif-sandbox.library.ucsb.edu. }
+      - { label: "148", type: PTR, rdata:	coll01z2.alexandria.ucsb.edu. }
+      - { label: "149", type: PTR, rdata:	coll02z1.alexandria.ucsb.edu. }
+      - { label: "150", type: PTR, rdata:	geoservices-sandbox.library.ucsb.edu. }
+      - { label: "151", type: PTR, rdata:	geoworks-sandbox.library.ucsb.edu. }
+      - { label: "152", type: PTR, rdata:	coll02-old.alexandria.ucsb.edu. }
+      - { label: "155", type: PTR, rdata:	mw01.alexandria.ucsb.edu. }
+      - { label: "156", type: PTR, rdata:	mw02.alexandria.ucsb.edu. }
+      - { label: "158", type: PTR, rdata:	coll01b.alexandria.ucsb.edu. }
+      - { label: "159", type: PTR, rdata:	geoblacklight.library.ucsb.edu. }
+      - { label: "167", type: PTR, rdata:	github.library.ucsb.edu. }
+      - { label: "168", type: PTR, rdata:	filemaker-2019.library.ucsb.edu. }
+      - { label: "171", type: PTR, rdata:	libcat-dev.library.ucsb.edu. }
+      - { label: "172", type: PTR, rdata:	libcat.library.ucsb.edu. }
+      - { label: "177", type: PTR, rdata:	epm1.library.ucsb.edu. }
+      - { label: "178", type: PTR, rdata:	epm2.library.ucsb.edu. }
+      - { label: "182", type: PTR, rdata:	libr-gauchoprt.library.ucsb.edu. }
+      - { label: "183", type: PTR, rdata:	pcut-test.library.ucsb.edu. }
+      - { label: "190", type: PTR, rdata:	jump-ops-01.library.ucsb.edu. }
+      - { label: "191", type: PTR, rdata:	jump-ops-02.library.ucsb.edu. }
+      - { label: "192", type: PTR, rdata: docker-vmware-001.library.ucsb.edu. }
+      - { label: "193", type: PTR, rdata: docker-vmware-002.library.ucsb.edu. }
+      - { label: "194", type: PTR, rdata: docker-vmware-003.library.ucsb.edu. }
+      - { label: "195", type: PTR, rdata: docker-vmware-004.library.ucsb.edu. }
+      - { label: "196", type: PTR, rdata:	lb-01.library.ucsb.edu. }
+      - { label: "197", type: PTR, rdata:	lb-02.library.ucsb.edu. }
+      - { label: "198", type: PTR, rdata:	vpn-gw-352.library.ucsb.edu. }
+      - { label: "199", type: PTR, rdata:	gateway.library.ucsb.edu. }
+      - { label: "203", type: PTR, rdata:	rdpgwbackup.library.ucsb.edu. }
+      - { label: "206", type: PTR, rdata:	epm-dev1.library.ucsb.edu. }
+      - { label: "211", type: PTR, rdata:	fridgemonitor.library.ucsb.edu. }
+      - { label: "224", type: PTR, rdata:	arcgis1.library.ucsb.edu. }
+      - { label: "228", type: PTR, rdata:	proton-os.library.ucsb.edu. }
+      - { label: "238", type: PTR, rdata:	chronopolis-dev-001.library.ucsb.edu. }
+      - { label: "245", type: PTR, rdata:	aresdev.library.ucsb.edu. }
+      - { label: "247", type: PTR, rdata:	ucsb-lib-lm-collector-1-v352.library.ucsb.edu. }
+      - { label: "248", type: PTR, rdata:	aws-datasync-agent-1-v352.library.ucsb.edu. }
+      - { label: "249", type: PTR, rdata:	haproxy1.library.ucsb.edu. }
+      - { label: "250", type: PTR, rdata:	haproxy2.library.ucsb.edu. }
+      - { label: "248", type: PTR, rdata:	haproxy.library.ucsb.edu. }
+ 
+
+  - name: alexandria.ucsb.edu
+    zone_type: master
+    reverse: false
+    default_ttl: 600
+    serial: 2021010800
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1-ucsb-lib.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.edu
+
+    a_records:
+      - 128.111.87.12
+
+    mx_records:
+      - name: aspmx.l.google.com
+        priority: 1
+      - name: alt1.aspmx.l.google.com
+        priority: 5
+      - name: alt2.aspmx.l.google.com
+        priority: 5
+      - name: aspmx2.googlemail.com
+        priority: 10
+      - name: aspmx3.googlemail.com
+        priority: 10
+    
+    rrs:
+      - label: www 
+        type: CNAME
+        rdata: haproxyt.library.ucsb.edu.
+
+      - label: collections
+        type: CNAME
+        rdata: collections-2.alexandria.ucsb.edu.
+
+      - label: collections-2
+        type: A
+        rdata: 128.111.87.128
+
+      - label: legacy
+        type: CNAME
+        rdata: haproxy.library.ucsb.edu.
+
+      - label: ucftp
+        type: CNAME
+        rdata: ftpd-352.library.ucsb.edu.
+
+      - label: piru
+        type: CNAME
+        rdata: haproxy1.library.ucsb.edu.
+    
+    subdomain_delegations:
+      - name: legacy.alexandria.ucsb.edu.
+        rrs:
+          - label: "*"
+            type: CNAME
+            rdata: haproxy.library.ucsb.edu.
+
+
+  - name: 95.111.128.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2021100100
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.
+
+    #rrs:
+
+
+  - name: 96.111.128.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2021100100
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.edu
+
+    #rrs:
+
+  - name: 97.111.128.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2021100100
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.edu
+
+    rrs:
+      - { label: "211", type: PTR, rdata: bops-remote.library.ucsb.edu. }
+      - { label: "222", type: PTR, rdata: managefilemaker.library.ucsb.edu.}
+
+  - name: 3.10.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2022030201
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+
+    also_notify:
+      - slave_servers_internal
+
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.edu
+
+    rrs:
+      - {'label': '30.3', 'type': 'PTR', 'rdata': 'ns1-2003.library.ucsb.edu.'}
+      - {'label': '44.3', 'type': 'PTR', 'rdata': 'ns2-2003.library.ucsb.edu.'}
+      - {'label': '51.4', 'type': 'PTR', 'rdata': 'ntp10x.library.ucsb.edu.'}
+      - {'label': '1.10', 'type': 'PTR', 'rdata': 'svmwindows-nfs-2476.library.ucsb.edu.'}
+      - {'label': '101.10', 'type': 'PTR', 'rdata': 'svmwindows-cifs01.library.ucsb.edu.'}
+      - {'label': '102.10', 'type': 'PTR', 'rdata': 'svmwindows-nfs01.library.ucsb.edu.'}
+      - {'label': '201.10', 'type': 'PTR', 'rdata': 'svmwindows-cifs02.library.ucsb.edu.'}
+      - {'label': '202.10', 'type': 'PTR', 'rdata': 'svmwindows-nfs02.library.ucsb.edu.'}
+      - {'label': '60.50', 'type': 'PTR', 'rdata': 'ovirt0.library.ucsb.edu.'}
+      - {'label': '61.50', 'type': 'PTR', 'rdata': 'ovirt1.library.ucsb.edu.'}
+      - {'label': '62.50', 'type': 'PTR', 'rdata': 'ovirt2.library.ucsb.edu.'}
+      - {'label': '63.50', 'type': 'PTR', 'rdata': 'ovirt3.library.ucsb.edu.'}
+      - {'label': '64.50', 'type': 'PTR', 'rdata': 'ovirt4.library.ucsb.edu.'}
+      - {'label': '70.50', 'type': 'PTR', 'rdata': 'gluster0.library.ucsb.edu.'}
+      - {'label': '71.50', 'type': 'PTR', 'rdata': 'gluster1.library.ucsb.edu.'}
+      - {'label': '72.50', 'type': 'PTR', 'rdata': 'gluster2.library.ucsb.edu.'}
+      - {'label': '73.50', 'type': 'PTR', 'rdata': 'gluster3.library.ucsb.edu.'}
+      - {'label': '80.50', 'type': 'PTR', 'rdata': 'freenas0.library.ucsb.edu.'}
+      - {'label': '90.50', 'type': 'PTR', 'rdata': 'ovirtengine.library.ucsb.edu.'}
+      - {'label': '24.60', 'type': 'PTR', 'rdata': 'ftpd-2476.library.ucsb.edu.'}
+      - {'label': '53.60', 'type': 'PTR', 'rdata': 'sshgw-2476.library.ucsb.edu.'}
+      - {'label': '42.60', 'type': 'PTR', 'rdata': 'bastion-ucsb-lib-1-v2476.library.ucsb.edu.'}
+      - {'label': '87.60', 'type': 'PTR', 'rdata': 'rssh-2476.library.ucsb.edu.'}
+      - {'label': '93.60', 'type': 'PTR', 'rdata': 'memcached1-2476.library.ucsb.edu.'}
+      - {'label': '108.60', 'type': 'PTR', 'rdata': 'proxy-lib-2476-1.library.ucsb.edu.'}
+      - {'label': '122.60', 'type': 'PTR', 'rdata': 'proxy-mysql-1-2476.library.ucsb.edu.'}
+      - {'label': '201.60', 'type': 'PTR', 'rdata': 'sendmail-relay-2476.library.ucsb.edu.'}
+      - {'label': '204.60', 'type': 'PTR', 'rdata': 'lamp1.library.ucsb.edu.'}
+      - {'label': '221.60', 'type': 'PTR', 'rdata': 'casper-2476.library.ucsb.edu.'}
+      - {'label': '244.60', 'type': 'PTR', 'rdata': 'adrlldap.library.ucsb.edu.'}
+      - {'label': '226.60', 'type': 'PTR', 'rdata': 'confluence-2476.library.ucsb.edu.'}
+      - {'label': '213.60', 'type': 'PTR', 'rdata': 'lamp2.library.ucsb.edu.'}
+      - {'label': '1.61', 'type': 'PTR', 'rdata': 'bind2.library.ucsb.edu.'}
+      - {'label': '7.61', 'type': 'PTR', 'rdata': 'bind1.library.ucsb.edu.'}
+      - {'label': '14.61', 'type': 'PTR', 'rdata': 'dgheapigee.library.ucsb.edu.'}
+      - {'label': '29.61', 'type': 'PTR', 'rdata': 'jenkins2-2476.library.ucsb.edu.'}
+      - {'label': '30.61', 'type': 'PTR', 'rdata': 'jenkinswwwd.library.ucsb.edu.'}
+      - {'label': '32.61', 'type': 'PTR', 'rdata': 'varnish1.library.ucsb.edu.'}
+      - {'label': '32.61', 'type': 'PTR', 'rdata': 'varnish2.library.ucsb.edu.'}
+      - {'label': '36.61', 'type': 'PTR', 'rdata': 'lampstage1.library.ucsb.edu.'}
+      - {'label': '37.61', 'type': 'PTR', 'rdata': 'haproxy1-2476.library.ucsb.edu.'}
+      - {'label': '39.61', 'type': 'PTR', 'rdata': 'haproxy2-2476.library.ucsb.edu.'}
+      - {'label': '44.61', 'type': 'PTR', 'rdata': 'haproxyt1-2476.library.ucsb.edu.'}
+      - {'label': '45.61', 'type': 'PTR', 'rdata': 'haproxyt2-2476.library.ucsb.edu.'}
+      - {'label': '46.61', 'type': 'PTR', 'rdata': 'ddrupalprod1.library.ucsb.edu.'}
+      - {'label': '47.61', 'type': 'PTR', 'rdata': 'ddrupalprod2.library.ucsb.edu.'}
+      - {'label': '48.61', 'type': 'PTR', 'rdata': 'ddrupaldev.library.ucsb.edu.'}
+      - {'label': '71.61', 'type': 'PTR', 'rdata': 'drupalsolr5.library.ucsb.edu.'}
+      - {'label': '164.61', 'type': 'PTR', 'rdata': 'rundeck-2476.library.ucsb.edu.'}
+      - {'label': '248.61', 'type': 'PTR', 'rdata': 'prometheusd.library.ucsb.edu.'}
+      - {'label': '7.63', 'type': 'PTR', 'rdata': 'openvpn-2476.library.ucsb.edu.'}
+      - {'label': '1.77', 'type': 'PTR', 'rdata': 'adrlvarnish.library.ucsb.edu.'}
+      - {'label': '5.80', 'type': 'PTR', 'rdata': 'db-percona-1.library.ucsb.edu.'}
+      - {'label': '6.80', 'type': 'PTR', 'rdata': 'db-percona-2.library.ucsb.edu.'}
+      - {'label': '7.80', 'type': 'PTR', 'rdata': 'db-percona-3.library.ucsb.edu.'}
+      - {'label': '8.80', 'type': 'PTR', 'rdata': 'db-percona-restore.library.ucsb.edu.'}
+      - {'label': '9.80', 'type': 'PTR', 'rdata': 'db-proxysql-vip.library.ucsb.edu.'}
+      - {'label': '10.80', 'type': 'PTR', 'rdata': 'db-proxysql-1.library.ucsb.edu.'}
+      - {'label': '11.80', 'type': 'PTR', 'rdata': 'db-proxysql-2.library.ucsb.edu.'}
+      - {'label': '201.100', 'type': 'PTR', 'rdata': 'squid-proxy-2476.library.ucsb.edu.'}
+      - {'label': '23.102', 'type': 'PTR', 'rdata': 'haproxydev1-2476.library.ucsb.edu.'}
+      - {'label': '47.102', 'type': 'PTR', 'rdata': 'splunk-2476.library.ucsb.edu.'}
+      - {'label': '54.102', 'type': 'PTR', 'rdata': 'proxy1-2003.library.ucsb.edu.'}
+      - {'label': '55.102', 'type': 'PTR', 'rdata': 'db-mysql1-2476.library.ucsb.edu.'}
+      - {'label': '97.102', 'type': 'PTR', 'rdata': 'osol-ai-2003.library.ucsb.edu.'}
+      - {'label': '127.102', 'type': 'PTR', 'rdata': 'collections-2003.alexandria.ucsb.edu.'}
+      - {'label': '187.102', 'type': 'PTR', 'rdata': 'lamp-prod-1-2003.library.ucsb.edu.'}
+      - {'label': '9.103', 'type': 'PTR', 'rdata': 'solr-2-2476.library.ucsb.edu.'}
+      - {'label': '26.103', 'type': 'PTR', 'rdata': 'netman-2476.library.ucsb.edu.'}
+      - {'label': '35.103', 'type': 'PTR', 'rdata': 'stash-2476.library.ucsb.edu.'}
+      - {'label': '1.106', 'type': 'PTR', 'rdata': 'vm-proxmox1-2003.library.ucsb.edu.'}
+      - {'label': '2.106', 'type': 'PTR', 'rdata': 'vm-proxmox2-2003.library.ucsb.edu.'}
+      - {'label': '4.110', 'type': 'PTR', 'rdata': 'lamp-prod-2-2003.library.ucsb.edu.'}
+      - {'label': '5.110', 'type': 'PTR', 'rdata': 'lamp-stage-2-2003.library.ucsb.edu.'}
+      - {'label': '6.110', 'type': 'PTR', 'rdata': 'lamp-prod-leg-1-2476.library.ucsb.edu.'}
+      - {'label': '7.110', 'type': 'PTR', 'rdata': 'lamp-prod-3-2476.library.ucsb.edu.'}
+      - {'label': '8.110', 'type': 'PTR', 'rdata': 'lamp-prod-leg-2-2476.library.ucsb.edu.'}
+      - {'label': '18.110', 'type': 'PTR', 'rdata': 'proxydev-1-2476.library.ucsb.edu.'}
+      - {'label': '20.110', 'type': 'PTR', 'rdata': 'adp1.library.ucsb.edu.'}
+      - {'label': '21.110', 'type': 'PTR', 'rdata': 'adpdev.library.ucsb.edu.'}
+      - {'label': '22.110', 'type': 'PTR', 'rdata': 'adp2.library.ucsb.edu.'}
+      - {'label': '1.112', 'type': 'PTR', 'rdata': 'manageandrew-2476.library.ucsb.edu.'}
+      - {'label': '16.112', 'type': 'PTR', 'rdata': 'rodc-2476.library.ucsb.edu.'}
+      - {'label': '36.112', 'type': 'PTR', 'rdata': 'rodc2-2476.library.ucsb.edu.'}
+      - {'label': '177.112', 'type': 'PTR', 'rdata': 'epm-2476.library.ucsb.edu.'}
+      - {'label': '178.112', 'type': 'PTR', 'rdata': 'epm2-2476.library.ucsb.edu.'}
+      - {'label': '2.114', 'type': 'PTR', 'rdata': 'sawmill-2.library.ucsb.edu.'}
+      - {'label': '121.121', 'type': 'PTR', 'rdata': 'ezproxy.library.ucsb.edu.'}
+      - {'label': '4.125', 'type': 'PTR', 'rdata': 'sw-8543-cisco-3750-2476.library.ucsb.edu.'}
+      - {'label': '5.125', 'type': 'PTR', 'rdata': 'sw-annex2-cisco-3750-2476.library.ucsb.edu.'}
+      - {'label': '3.140', 'type': 'PTR', 'rdata': 'stor-nhdc-rw9-r3-u1-stor3-2476.library.ucsb.edu.'}
+      - {'label': '1.150', 'type': 'PTR', 'rdata': 'wlc-active-cisco-5508.library.ucsb.edu.'}
+      - {'label': '1.180', 'type': 'PTR', 'rdata': 'repodev1-2476.library.ucsb.edu.'}
+      - {'label': '2.180', 'type': 'PTR', 'rdata': 'repostage1-2476.library.ucsb.edu.'}
+      - {'label': '10.180', 'type': 'PTR', 'rdata': 'repoprod1-2476.library.ucsb.edu.'}
+      - {'label': '1.201', 'type': 'PTR', 'rdata': 'github-2476.library.ucsb.edu.'}
+      - {'label': '2.201', 'type': 'PTR', 'rdata': 'gitback.library.ucsb.edu.'}
+      - {'label': '1.50', 'type': 'PTR', 'rdata': 'packetfence1-2476.library.ucsb.edu.'}
+      - {'label': '2.50', 'type': 'PTR', 'rdata': 'packetfence2-2476.library.ucsb.edu.'}
+      - {'label': '3.50', 'type': 'PTR', 'rdata': 'packetfence3-2476.library.ucsb.edu.'}
+
+  - name: 11.10.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2022030201
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+    also_notify:
+      - slave_servers_internal
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.edu
+    rrs:
+      - {'label': '10.1', 'type': 'PTR', 'rdata': 'nimble-2474.library.ucsb.edu.'}
+      - {'label': '11.1', 'type': 'PTR', 'rdata': 'nhdc-nimble01-ctrl-a.library.ucsb.edu.'}
+      - {'label': '12.1', 'type': 'PTR', 'rdata': 'nhdc-nimble01-ctrl-b.library.ucsb.edu.'}
+      - {'label': '20.1', 'type': 'PTR', 'rdata': 'nimble2-2474.library.ucsb.edu.'}
+      - {'label': '21.1', 'type': 'PTR', 'rdata': 'nhdc-nimble02-ctrl-a.library.ucsb.edu.'}
+      - {'label': '22.1', 'type': 'PTR', 'rdata': 'nhdc-nimble02-ctrl-b.library.ucsb.edu.'}
+      - {'label': '100.1', 'type': 'PTR', 'rdata': 'ucs-2474.library.ucsb.edu.'}
+      - {'label': '139.1', 'type': 'PTR', 'rdata': 'netapp-cluster.library.ucsb.edu.'}
+      - {'label': '140.1', 'type': 'PTR', 'rdata': 'netapp-01.library.ucsb.edu.'}
+      - {'label': '141.1', 'type': 'PTR', 'rdata': 'netapp-02.library.ucsb.edu.'}
+      - {'label': '142.1', 'type': 'PTR', 'rdata': 'netapp-sp-01.library.ucsb.edu.'}
+      - {'label': '143.1', 'type': 'PTR', 'rdata': 'netapp-sp-02.library.ucsb.edu.'}
+      - {'label': '144.1', 'type': 'PTR', 'rdata': 'netapp-um.library.ucsb.edu.'}
+      - {'label': '150.1', 'type': 'PTR', 'rdata': 'vsmunix.library.ucsb.edu.'}
+      - {'label': '2.2', 'type': 'PTR', 'rdata': 'infiniband3.library.ucsb.edu.'}
+      - {'label': '11.10', 'type': 'PTR', 'rdata': 'nhdc-esx-11.library.ucsb.edu.'}
+      - {'label': '12.10', 'type': 'PTR', 'rdata': 'nhdc-esx-12.library.ucsb.edu.'}
+      - {'label': '13.10', 'type': 'PTR', 'rdata': 'nhdc-esx-13.library.ucsb.edu.'}
+      - {'label': '14.10', 'type': 'PTR', 'rdata': 'nhdc-esx-14.library.ucsb.edu.'}
+      - {'label': '21.10', 'type': 'PTR', 'rdata': 'nhdc-esx-21.library.ucsb.edu.'}
+      - {'label': '22.10', 'type': 'PTR', 'rdata': 'nhdc-esx-22.library.ucsb.edu.'}
+      - {'label': '23.10', 'type': 'PTR', 'rdata': 'nhdc-esx-23.library.ucsb.edu.'}
+      - {'label': '24.10', 'type': 'PTR', 'rdata': 'nhdc-esx-24.library.ucsb.edu.'}
+      - {'label': '32.50', 'type': 'PTR', 'rdata': 'stor2-lom.library.ucsb.edu.'}
+      - {'label': '33.50', 'type': 'PTR', 'rdata': 'stor3-lom.library.ucsb.edu.'}
+      - {'label': '44.50', 'type': 'PTR', 'rdata': 'ns1-lom.library.ucsb.edu.'}
+      - {'label': '45.50', 'type': 'PTR', 'rdata': 'ns2-lom.library.ucsb.edu.'}
+      - {'label': '49.50', 'type': 'PTR', 'rdata': 'splunk-lom.library.ucsb.edu.'}
+      - {'label': '52.50', 'type': 'PTR', 'rdata': 'bind1ilo.library.ucsb.edu.'}
+      - {'label': '53.50', 'type': 'PTR', 'rdata': 'bind2ilo.library.ucsb.edu.'}
+      - {'label': '100.50', 'type': 'PTR', 'rdata': 'photon-os-1-2474.library.ucsb.edu.'}
+      - {'label': '20.60', 'type': 'PTR', 'rdata': 'sshgw-2474.library.ucsb.edu.'}
+      - {'label': '24.60', 'type': 'PTR', 'rdata': 'ftpd-2474.library.ucsb.edu.'}
+      - {'label': '42.60', 'type': 'PTR', 'rdata': 'bastion-ucsb-lib-1-v2474.library.ucsb.edu.'}
+      - {'label': '52.60', 'type': 'PTR', 'rdata': 'librenms.library.ucsb.edu.'}
+      - {'label': '123.60', 'type': 'PTR', 'rdata': 'casper-2474.library.ucsb.edu.'}
+      - {'label': '201.60', 'type': 'PTR', 'rdata': 'sendmail-relay-2474.library.ucsb.edu.'}
+      - {'label': '29.61', 'type': 'PTR', 'rdata': 'jenkins2-2474.library.ucsb.edu.'}
+      - {'label': '7.63', 'type': 'PTR', 'rdata': 'openvpn-2474.library.ucsb.edu.'}
+      - {'label': '1.100', 'type': 'PTR', 'rdata': 'netman-2474.library.ucsb.edu.'}
+      - {'label': '5.100', 'type': 'PTR', 'rdata': 'pfsense-classroom.library.ucsb.edu.'}
+      - {'label': '6.100', 'type': 'PTR', 'rdata': 'pfsense-wireless.library.ucsb.edu.'}
+      - {'label': '251.255', 'type': 'PTR', 'rdata': 'pfsense-ha-1.library.ucsb.edu.'}
+      - {'label': '252.255', 'type': 'PTR', 'rdata': 'pfsense-ha-2.library.ucsb.edu.'}
+      - {'label': '253.255', 'type': 'PTR', 'rdata': 'pfsense-ha-vip.library.ucsb.edu.'}
+      - {'label': '16.100', 'type': 'PTR', 'rdata': 'rodc-2474.library.ucsb.edu.'}
+      - {'label': '36.100', 'type': 'PTR', 'rdata': 'rodc2-2474.library.ucsb.edu.'}
+      - {'label': '104.100', 'type': 'PTR', 'rdata': 'vsphere.library.ucsb.edu.'}
+      - {'label': '106.100', 'type': 'PTR', 'rdata': 'stash-2474.library.ucsb.edu.'}
+      - {'label': '115.100', 'type': 'PTR', 'rdata': 'splunk-2474.library.ucsb.edu.'}
+      - {'label': '120.100', 'type': 'PTR', 'rdata': 'librenms-cf.library.ucsb.edu.'}
+      - {'label': '122.100', 'type': 'PTR', 'rdata': 'ca-linux.library.ucsb.edu.'}
+      - {'label': '126.100', 'type': 'PTR', 'rdata': 'packetfence-2474.library.ucsb.edu.'}
+      - {'label': '150.100', 'type': 'PTR', 'rdata': 'd42-rc-01-2474.library.ucsb.edu.'}
+      - {'label': '201.100', 'type': 'PTR', 'rdata': 'squid-proxy-2474.library.ucsb.edu.'}
+      - {'label': '3.133', 'type': 'PTR', 'rdata': 'stor-nhdc-rw9-r3-u1-stor3-2474.library.ucsb.edu.'}
+      - {'label': '8.207', 'type': 'PTR', 'rdata': 'xls.library.ucsb.edu.'}
+      - {'label': '20.207', 'type': 'PTR', 'rdata': 'hpfc1.library.ucsb.edu.'}
+      - {'label': '21.207', 'type': 'PTR', 'rdata': 'hpfc2.library.ucsb.edu.'}
+      - {'label': '1.120', 'type': 'PTR', 'rdata': 'radiolib-2474.library.ucsb.edu.'}
+      - {'label': '2.120', 'type': 'PTR', 'rdata': 'radioannex-2474.library.ucsb.edu.'}
+      - {'label': '18.120', 'type': 'PTR', 'rdata': 'ap-1523-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '19.120', 'type': 'PTR', 'rdata': 'ap-1575-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '20.120', 'type': 'PTR', 'rdata': 'ap-cheadle-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '21.120', 'type': 'PTR', 'rdata': 'ap-pacific-cisco-3702i.library.ucsb.edu.'}
+      - {'label': '22.120', 'type': 'PTR', 'rdata': 'ap-access-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '23.120', 'type': 'PTR', 'rdata': 'ap-reference-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '24.120', 'type': 'PTR', 'rdata': 'ap-1411-cisco-3702i.library.ucsb.edu.'}
+      - {'label': '25.120', 'type': 'PTR', 'rdata': 'ap-1312-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '26.120', 'type': 'PTR', 'rdata': 'ap-2513-cisco-3702i.library.ucsb.edu.'}
+      - {'label': '27.120', 'type': 'PTR', 'rdata': 'ap-collaboratory-cisco-3702i.library.ucsb.edu.'}
+      - {'label': '28.120', 'type': 'PTR', 'rdata': 'ap-collaboratory-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '29.120', 'type': 'PTR', 'rdata': 'ap-annex2-cisco-3702e.library.ucsb.edu.'}
+      - {'label': '1.1', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-1-mgmt.library.ucsb.edu.'}
+      - {'label': '2.1', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-2-mgmt.library.ucsb.edu.'}
+      - {'label': '3.1', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-1.library.ucsb.edu.'}
+      - {'label': '4.1', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-2.library.ucsb.edu.'}
+      - {'label': '1.4', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-1-mgmt.library.ucsb.edu.'}
+      - {'label': '2.4', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-2-mgmt.library.ucsb.edu.'}
+      - {'label': '3.254', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-1.library.ucsb.edu.'}
+      - {'label': '4.254', 'type': 'PTR', 'rdata': 'sw-nhdc-nx5k-2.library.ucsb.edu.'}
+      - {'label': '1.207', 'type': 'PTR', 'rdata': 'sw-lib-nx7k-1-mgmt.library.ucsb.edu.'}
+      - {'label': '2.207', 'type': 'PTR', 'rdata': 'sw-lib-nx7k-1.library.ucsb.edu.'}
+      - {'label': '11.207', 'type': 'PTR', 'rdata': 'sw-lib-nx5k-1-mgmt.library.ucsb.edu.'}
+      - {'label': '12.207', 'type': 'PTR', 'rdata': 'sw-lib-nx5k-2-mgmt.library.ucsb.edu.'}
+      - {'label': '13.207', 'type': 'PTR', 'rdata': 'sw-lib-nx5k-1.library.ucsb.edu.'}
+      - {'label': '14.207', 'type': 'PTR', 'rdata': 'sw-lib-nx5k-2.library.ucsb.edu.'}
+      - {'label': '1.124', 'type': 'PTR', 'rdata': 'sw-1523-it-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '2.124', 'type': 'PTR', 'rdata': 'sw-1520e-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '3.124', 'type': 'PTR', 'rdata': 'sw-2561a-procurve-5406rzl2.library.ucsb.edu.'}
+      - {'label': '4.124', 'type': 'PTR', 'rdata': 'sw-music-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '6.124', 'type': 'PTR', 'rdata': 'sw-1575-procurve-5412zl.library.ucsb.edu.'}
+      - {'label': '7.124', 'type': 'PTR', 'rdata': 'sw-2561a-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '8.124', 'type': 'PTR', 'rdata': 'sw-3561a-procurve-5412zl.library.ucsb.edu.'}
+      - {'label': '9.124', 'type': 'PTR', 'rdata': 'sw-4553a-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '10.124', 'type': 'PTR', 'rdata': 'sw-5543-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '11.124', 'type': 'PTR', 'rdata': 'sw-1508-procurve-5412rzl2.library.ucsb.edu.'}
+      - {'label': '12.124', 'type': 'PTR', 'rdata': 'sw-1507-procurve-5412rzl2.library.ucsb.edu.'}
+      - {'label': '13.124', 'type': 'PTR', 'rdata': 'sw-2502-procurve-5412rzl2.library.ucsb.edu.'}
+      - {'label': '14.124', 'type': 'PTR', 'rdata': 'sw-1327-procurve-5412rzl2.library.ucsb.edu.'}
+      - {'label': '15.124', 'type': 'PTR', 'rdata': 'sw-2327-procurve-5412rzl2.library.ucsb.edu.'}
+      - {'label': '16.124', 'type': 'PTR', 'rdata': 'sw-3427-procurve-5412rzl2.library.ucsb.edu.'}
+      - {'label': '17.124', 'type': 'PTR', 'rdata': 'sw-1507b-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '97.124', 'type': 'PTR', 'rdata': 'sw-test-procurve-5406zl.library.ucsb.edu.'}
+      - {'label': '1.125', 'type': 'PTR', 'rdata': 'sw-mokuno-cisco-3750.library.ucsb.edu.'}
+      - {'label': '3.125', 'type': 'PTR', 'rdata': 'sw-1523wb-cisco-3750.library.ucsb.edu.'}
+      - {'label': '4.125', 'type': 'PTR', 'rdata': 'sw-8543-cisco-3750.library.ucsb.edu.'}
+      - {'label': '5.125', 'type': 'PTR', 'rdata': 'sw-annex2-cisco-3750.library.ucsb.edu.'}
+      - {'label': '1.130', 'type': 'PTR', 'rdata': 'ups-1523cf-apc-6000.library.ucsb.edu.'}
+      - {'label': '2.130', 'type': 'PTR', 'rdata': 'ups-1523e-apc-srt2200.library.ucsb.edu.'}
+      - {'label': '3.130', 'type': 'PTR', 'rdata': 'ups-1523cf-apc-3000.library.ucsb.edu.'}
+      - {'label': '4.130', 'type': 'PTR', 'rdata': 'ups-1523cf-apc-3000rm-1.library.ucsb.edu.'}
+      - {'label': '5.130', 'type': 'PTR', 'rdata': 'ups-1523cf-apc-3000rm-2.library.ucsb.edu.'}
+      - {'label': '6.130', 'type': 'PTR', 'rdata': 'ups-1520e-apc-srt2200.library.ucsb.edu.'}
+      - {'label': '7.130', 'type': 'PTR', 'rdata': 'ups-1575-apc-srt2200.library.ucsb.edu.'}
+      - {'label': '8.130', 'type': 'PTR', 'rdata': 'ups-2561a-apc-srt2200.library.ucsb.edu.'}
+      - {'label': '9.130', 'type': 'PTR', 'rdata': 'ups-3561a-apc-srt2200.library.ucsb.edu.'}
+      - {'label': '11.130', 'type': 'PTR', 'rdata': 'ups-1508-apc-6000rm.library.ucsb.edu.'}
+      - {'label': '12.130', 'type': 'PTR', 'rdata': 'ups-1507-apc-6000rm.library.ucsb.edu.'}
+      - {'label': '13.130', 'type': 'PTR', 'rdata': 'ups-2502-apc-6000rm.library.ucsb.edu.'}
+      - {'label': '14.130', 'type': 'PTR', 'rdata': 'ups-1327-apc-6000rm.library.ucsb.edu.'}
+      - {'label': '15.130', 'type': 'PTR', 'rdata': 'ups-2327-apc-6000rm.library.ucsb.edu.'}
+      - {'label': '16.130', 'type': 'PTR', 'rdata': 'ups-3427-apc-6000rm.library.ucsb.edu.'}
+      - {'label': '17.130', 'type': 'PTR', 'rdata': 'ups1-1523cf-tl-smart5000.library.ucsb.edu.'}
+      - {'label': '18.130', 'type': 'PTR', 'rdata': 'ups2-1523cf-tl-smart5000.library.ucsb.edu.'}
+      - {'label': '19.130', 'type': 'PTR', 'rdata': 'pdu1-1523cf-tl-mh30hvnet.library.ucsb.edu.'}
+      - {'label': '20.130', 'type': 'PTR', 'rdata': 'pdu2-1523cf-tl-mh30hvnet.library.ucsb.edu.'}
+      - {'label': '31.130', 'type': 'PTR', 'rdata': 'ups-1523cf-tripp-5000-1.library.ucsb.edu.'}
+      - {'label': '32.130', 'type': 'PTR', 'rdata': 'ups-1523cf-tripp-5000-2.library.ucsb.edu.'}
+      - {'label': '101.130', 'type': 'PTR', 'rdata': 'pdu-1523cf-tripp-1.library.ucsb.edu.'}
+      - {'label': '102.130', 'type': 'PTR', 'rdata': 'pdu-1523cf-tripp-2.library.ucsb.edu.'}
+      - {'label': '103.130', 'type': 'PTR', 'rdata': 'pdu-1523nx-tripp-1.library.ucsb.edu.'}
+      - {'label': '104.130', 'type': 'PTR', 'rdata': 'pdu-1523nx-tripp-2.library.ucsb.edu.'}
+      - {'label': '1.131', 'type': 'PTR', 'rdata': 'logs1-2474.library.ucsb.edu.'}
+      - {'label': '1.150', 'type': 'PTR', 'rdata': 'wlc-1523-cisco-5508.library.ucsb.edu.'}
+      - {'label': '2.150', 'type': 'PTR', 'rdata': 'wlc-2502-cisco-5508.library.ucsb.edu.'}
+      - {'label': '1.50', 'type': 'PTR', 'rdata': 'packetfence1-2474.library.ucsb.edu.'}
+      - {'label': '2.50', 'type': 'PTR', 'rdata': 'packetfence2-2474.library.ucsb.edu.'}
+      - {'label': '3.50', 'type': 'PTR', 'rdata': 'packetfence3-2474.library.ucsb.edu.'}
+      - {'label': '10.50', 'type': 'PTR', 'rdata': 'packetfence-vip-2474.library.ucsb.edu.'}
+      - {'label': '4.207', 'type': 'PTR', 'rdata': 'infiniband1.library.ucsb.edu.'}
+      - {'label': '5.207', 'type': 'PTR', 'rdata': 'infiniband2.library.ucsb.edu.'}
+    
+    
+
+
+  - name: 12.10.in-addr.arpa
+    zone_type: master
+    reverse: true
+    default_ttl: 600
+    serial: 2022030201
+    refresh: 3h
+    retry: 1H
+    expire: 1000H
+    # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+    primary: ns1.library.ucsb.edu
+    admin: sysadmin.library.ucsb.edu
+    also_notify:
+      - slave_servers_internal
+    allow_notify:
+      - master_servers_internal
+    
+    allow_transfer:
+      - campus_name_servers
+      - slave_servers_internal
+    ns_records:
+      - ns1.library.ucsb.edu
+      - ns2.library.ucsb.edu
+      - ns1.ucsb.edu
+      - ns2.ucsb.edu
+    
+    rrs:
+      - {'label': '16.13', 'type': 'PTR', 'rdata': 'rodc-2480.library.ucsb.edu.'}
+      - {'label': '36.13', 'type': 'PTR', 'rdata': 'rodc2-2480.library.ucsb.edu.'}
+      - {'label': '1.14', 'type': 'PTR', 'rdata': 'svm-vmware-2480.library.ucsb.edu.'}

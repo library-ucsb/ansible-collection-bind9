@@ -1,0 +1,49 @@
+$TTL 3h;
+@                       IN  SOA ns1.library.ucsb.edu.  sysadmin.library.ucsb.edu. (
+;;                       YYYYMMDDXX	; YYYY = year, MM = month, DD = day, XX = increment(00-99)
+                         2022040500     ; serial number
+                        	3h          	; refresh
+                        	1h           	; retry
+                        	4w      		; expire
+                        	1h       )      ; minimum TTL
+
+@			IN NS	ns1.library.ucsb.edu.
+@			IN NS	ns2.library.ucsb.edu.
+@                       IN NS   ns1.ucsb.edu.
+@                       IN NS   ns2.ucsb.edu.
+@			A	128.111.87.248
+@                       60      IN      MX      1      aspmx.l.google.com.
+@                       60      IN      MX      5      alt1.aspmx.l.google.com.
+@                       60      IN      MX      5      alt2.aspmx.l.google.com.
+@                       60      IN      MX      10      aspmx2.googlemail.com.
+@                       60      IN      MX      10      aspmx3.googlemail.com.
+
+mqwixxwyyoyl		CNAME	gv-nhwzlibmfjg6jh.dv.googlehosted.com.
+
+
+_acme-challenge.www.library.ucsb.edu.		360	IN	TXT	"5AswUkgsiZQr6dhsB2f4hHUsZYPMVsneOmmdD1hc-RE"
+_acme-challenge.tl.library.ucsb.edu.		360	IN	TXT	"eg1o9eEZA8IFT7iugTxiL_VI92DZ_ndm3gx-PiXOeGI"
+
+
+
+lists.library.ucsb.edu.	60	IN	MX	10	lists.connect.ucsb.edu.
+lists.library.ucsb.edu.  IN TXT "v=spf1 a mx include:_spf.ucsb.edu ~all"
+
+google._domainkey	IN	TXT	("v=DKIM1; k=rsa; p="
+"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk52UK/XujEZXtTTscJMo7PugBln05JlNEG"
+"LnAk6KQURdOcfnevPiSxi7yszeP/gZE7KhwfhSctPAtQIumIaD8rl4yVd8ySp3ovdR/P2U5TrBx+oj/"
+"ecTvG+wQFTRMRmnrdiAoaAhDinXJb++ytvape6hmip9FGsYEwR9aYtfQ5zFLGbelhv4BmXNVdgOr7JD3"
+"6WKg7/7Z02Yr1u7E2d2INTw6LAKb3Gx/3De2z6FxoK+CITpcbXoeZDfTSI1+LOiWp7P7N2K66kTVUCu/"
+"4WCnEIACHIfnJ786wDL9XUjy6zY1xkUoxL03lCljuJlGPAHxEwxWYdPzlOUsyjbe5IIdQIDAQAB")
+
+
+
+
+library.ucsb.edu.   IN TXT "v=spf1 a mx include:_spf.ucsb.edu include:spf-na.exlibrisgroup.com ~all"
+library.ucsb.edu.   IN TXT "atlassian-domain-verification=ZIaUbbkrYS6DgSxHx1eKL1A57BO3OaXGLHygBLZ6xui3OkJM81ApVKLKDlU3EySM"
+library.ucsb.edu.   IN TXT "MS=D7F719CF8E6A69269B750C38B2D2718450464065"
+library.ucsb.edu.   IN TXT "apple-domain-verification=pNUAObZKnm3Mbhau"
+
+_acme-challenge.iiif.library.ucsb.edu.	       360 IN	TXT	"1mDeI36L-cmiJ4TCbAJpOZs8jaiaTIgoVQONa95R0_8"
+_acme-challenge.cantaloupe-1.library.ucsb.edu. 360 IN	TXT	"5WqZBNuHUS2c3P1xEtGVRuL_zBwYywWsdVF27tJfc4w"
+

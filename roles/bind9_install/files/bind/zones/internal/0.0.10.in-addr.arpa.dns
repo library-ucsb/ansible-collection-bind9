@@ -1,0 +1,22 @@
+;
+;  Database file 0.0.10.in-addr.arpa.dns for 0.0.10.in-addr.arpa zone.
+;      Zone version:  1
+;
+
+@                       IN  SOA ns1.library.ucsb.edu.  dnsadmin.library.ucsb.edu. (
+                        	2009020500   	; serial number
+                        	3h 		; refresh
+                        	600          	; retry
+                        	86400        	; expire
+                        	3600       ) 	; minimum TTL
+
+;
+;  Zone NS records
+;
+
+@                       NS	ns1.library.ucsb.edu.
+
+;
+;  Zone records
+;
+

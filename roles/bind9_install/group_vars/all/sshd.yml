@@ -1,0 +1,21 @@
+# willshersystems.sshd
+sshd_enable: True
+sshd_skip_defaults: False
+sshd_manage_service: True
+sshd_allow_reload: True
+sshd:
+  AllowUsers:
+    - josh
+    - mokuno
+    - logicmonitor
+    - 'ansible-deploy'
+
+  UseDNS: no
+  PasswordAuthentication: no
+  PermitRootLogin: no
+  PubkeyAuthentication: True
+  LogLevel: 'info'
+  AllowAgentForwarding: true
+  AllowTcpForwarding: true
+  X11Forwarding: False
+  UsePAM: no
