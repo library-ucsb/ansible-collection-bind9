@@ -3,8 +3,10 @@
 - name: install bind9 packages
   apt:
     pkg: "{{ bind9_packages }}"
-    state: present
+    state: present                  ## << -- NNEED TO PIN BIND9 VERSION!!!!
     cache_valid_time: 600
+  tags:
+    - role:bind9:installation
 
 - name: copy bind9 defaults file
   template:
@@ -15,6 +17,9 @@
     mode: 0644
   notify:
     - restart bind9
+  tags:
+    - role:bind9:installation
+    - role:bind9:configuration
 
 - block:
     - name: ensure existence of the log directory
@@ -33,6 +38,10 @@
         group: "{{ bind9_group }}"
         mode: 0644
   when: bind9_named_logging
+  tags:
+    - role:bind9:installation
+    - role:bind9:configuration
+
 
 - name: configure bind9 named.conf files
   template:
@@ -46,8 +55,11 @@
     - named.conf.options
   notify:
     - reload bind9
-  # Variable register for eventual use outside the role
   register: bind9_named_conf
+  tags:
+    - role:bind9:installation
+    - role:bind9:configuration
+    - role:bind9:zones:change
 
 - name: check validity of named.conf
   command: named-checkconf
@@ -57,6 +69,10 @@
   changed_when: False
   vars:
     ansible_ssh_pipelining: True
+  tags:
+    - role:bind9:installation
+    - role:bind9:configuration
+    - role:bind9:zones:change    
 
 - name: create bind9 directory for master zones
   file:
@@ -66,6 +82,8 @@
     group: "{{ bind9_group }}"
     mode: 02775
   when: bind9_authoritative|default()
+  tags:
+    - role:bind9:installation
 
 - name: create bind9 directory for master zone includes
   file:
@@ -75,6 +93,8 @@
     group: "{{ bind9_group }}"
     mode: 0755
   when: bind9_authoritative|default()
+  tags:
+    - role:bind9:installation
 
 - name: install bind9 authoritative include files
   template:
@@ -88,6 +108,10 @@
   notify:
     - zone file change
     - reload bind9
+  tags:
+    - role:bind9:installation
+    - role:bind9:configuration
+    - role:bind9:zones:change    
 
 - name: install bind9 rndc key
   template:
@@ -101,6 +125,9 @@
     - restart bind9
   tags:
     - role:bind9:rndc_key
+    - role:bind9:installation
+    - role:bind9:configuration
+    - role:bind9:zones:change
 
 - name: create bind9 directory for keys
   file:
@@ -113,6 +140,7 @@
   tags:
     - role:bind9:ddns
     - role:bind9:dnssec
+    - role:bind9:installation
 
 # TODO: DDNS: move keys into vault file
 - name: copy over DDNS keys for zones with update_keyfile
@@ -128,6 +156,9 @@
     - bind9_authoritative|default()
     - item.type|default(bind9_zone_type) == 'master'
     - item.update_keyfile|default()
+  tags:
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 - name: copy over DDNS private keys for zones with update_keyfile
   copy:
@@ -142,6 +173,9 @@
     - bind9_authoritative|default()
     - item.type|default(bind9_zone_type) == 'master'
     - item.update_keyfile|default()
+  tags:
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 
 # TODO: DNSSEC: implement key rollover
@@ -158,10 +192,15 @@
     - item.dnssec|default(bind9_dnssec_zones_default_enabled)
   tags:
     - role:bind9:dnssec
+    - role:bind9:installation
+    - role:bind9:zones:change
+    
 
 # Filter out all skipped results (e.g. if item.dnssec is set to False)
 - set_fact:
     bind9_reg_dnssec_keys: "{{ bind9_reg_dnssec_keys_tmp.results|selectattr('skipped', 'undefined')|list }}"
+    tags:
+    - role:bind9:installation
 
 - name: generate bind9 key signing keys for zones
   command: dnssec-keygen -a RSASHA256 -b 4096 -n ZONE -f KSK {{ item.item.name }}
@@ -179,6 +218,8 @@
     - reload bind9
   tags:
     - role:bind9:dnssec
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 - name: generate bind9 zone signing keys for zones
   command: dnssec-keygen -a RSASHA256 -b 2048 -n ZONE {{ item.item.name }}
@@ -196,6 +237,8 @@
     - reload bind9
   tags:
     - role:bind9:dnssec
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 - name: read in key signing keys from key files (DNSKEY)
   command: "grep 'IN DNSKEY' /etc/bind/keys/{{ item.stdout }}.key"
@@ -208,6 +251,8 @@
     - item.changed|default()
   tags:
     - role:bind9:dnssec
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 - name: generate DS records from key signing keys
   command: "dnssec-dsfromkey -2 /etc/bind/keys/{{ item.stdout }}.key"
@@ -220,6 +265,8 @@
     - item.changed|default()
   tags:
     - role:bind9:dnssec
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 - name: create dynamic bind9 zone files
   template:
@@ -237,6 +284,8 @@
     - reload bind9
   tags:
     - role:bind9:zones
+    - role:bind9:installation
+    - role:bind9:zones:change    
 
 - name: install static bind9 zone files
   copy:
@@ -255,6 +304,8 @@
     - reload bind9
   tags:
     - role:bind9:zones
+    - role:bind9:installation
+    - role:bind9:zones:change
 
 - name: check validity of zone files
   command: named-checkzone {{ item.name }} /etc/bind/zones/db.{{ item.name }}
@@ -269,3 +320,6 @@
   vars:
     ansible_ssh_pipelining: True
 
+  tags:
+    - role:bind9:installation
+    - role:bind9:zones:change
