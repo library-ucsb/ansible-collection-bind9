@@ -269,5 +269,3 @@
   vars:
     ansible_ssh_pipelining: True
 
-- import_tasks: monit.yml
-  when: bind9_monit_enabled|default()
