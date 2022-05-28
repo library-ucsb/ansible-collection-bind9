@@ -157,3 +157,19 @@
         - role:bind9:configuration
         - role:bind9:zones:change    
 
+  rescue:
+    - name: restore to previous state 
+      loop: bind9_backup_content
+      copy:
+        remote_src: yes
+        src: "{{ item.dest }}"
+        dest: "{{ item.src }}"
+      
+      notify:
+        - reload bind9
+
+      tags:
+        - role:bind9:backup
+        - role:bind9:restore
+
+      
