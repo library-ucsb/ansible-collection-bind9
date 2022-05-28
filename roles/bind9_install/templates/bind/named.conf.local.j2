@@ -43,6 +43,15 @@ zone "{{ zone.name }}" {
 {%     elif zone.notify|default(true) %}
     notify yes;
 {%     endif %}
+{%     if  zone.allow_transfer | length > 0 %}
+    allow-transfer { {{ zone.allow_transfer|join('; ') }}; };
+{%     endif %}
+{%     if zone.also_notify is defined and zone.also_notify | length > 0 %}
+    also-notify { {{ zone.also_notify|join('; ') }}; };
+{%     endif %}
+{%     if zone.allow_query is defined and zone.allow_query | length > 0 %}
+    allow-query { any; };
+{%     endif %}
 {%     if (bind9_dnssec|default() or zone.dnssec|default()) and zone.dnssec|default(bind9_dnssec_zones_default_enabled) %}
     auto-dnssec maintain;
     inline-signing yes;
@@ -53,7 +62,7 @@ zone "{{ zone.name }}" {
     };
 {%     endif %}
 {%   elif zone_type == 'slave' %}
-    file "/var/lib/bind/db.{{ zone.name }}";
+    file "/var/cache/bind/db.{{ zone.name }}";
 {%     if zone.masters|default() or bind9_masters|default() %}
     notify no;
     masters {
@@ -67,6 +76,12 @@ zone "{{ zone.name }}" {
 {%         endfor %}
 {%       endif %}
     };
+{%     endif %}
+{%     if zone.also_notify is defined and zone.also_notify | length > 0 %}
+    also-notify { {{ zone.also_notify|join('; ') }}; };
+{%     endif %}
+{%     if zone.allow_notify is defined and zone.allow_notify | length > 0 %}
+    allow-notify { {{ zone.allow_notify | join('; ') }}; };
 {%     endif %}
 {%   else %}
 {%      if zone_type == 'forward' %}

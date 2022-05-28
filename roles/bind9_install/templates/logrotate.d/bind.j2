@@ -1,7 +1,7 @@
 {{ bind9_log_path }}/bind.log {
-  daily
+  {{ bind9_logrotate_frequency }}
   missingok
-  rotate 7
+  rotate {{ bind9_logrotate_rotate_after }}
   compress
   delaycompress
   notifempty

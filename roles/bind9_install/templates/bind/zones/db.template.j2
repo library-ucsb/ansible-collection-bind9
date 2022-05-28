@@ -62,12 +62,34 @@ $TTL {{ zone.negative_ttl|default('3600') }}   ; 1 hour
                     CAA     {{ caa }}
 {%   endfor %}
 {% endif %}
+
 $ORIGIN {{ zone.name }}.
 
 {# Then a generic yaml following basic RR structure (omiting 'class'):
    Seguimos con un yaml conforme a la estructura básica de un RR (omitiendo 'class'):
    http://www.zytrax.com/books/dns/ch8/#generic #}
 
-{% for resource in zone.rrs %}
-{{ resource.label }} {{ resource.ttl|default() }} {{ resource.type }} {{ resource.rdata }}
-{% endfor %}
+{% if zone.rrs is defined and zone.rrs | length > 0 %}
+{%   for resource in zone.rrs %}
+{{ '{:50}'.format(resource.label) }} {{ '{:>5}'.format(resource.ttl|default()) }} {{ '{:>6}'.format(resource.type) }}  {{ resource.rdata }}
+{%   endfor %}
+{% endif %}
+
+
+;; Subdomain Delegations
+{% if zone.subdomain_delegations is defined and zone.subdomain_delegations | length > 0 %}
+{%   for subdomain in zone.subdomain_delegations %}
+$ORIGIN {{ subdomain.name }}
+{%     if subdomain.nameservers is defined %}
+{%       for ns in subdomain.nameservers %}
+@     IN   NS   {{ ns }}
+{%       endfor %}
+{%     endif %}
+{%     if subdomain.rrs is defined %}
+{%       for rec in subdomain.rrs %}
+{{ '{:10}'.format(rec.label) }} {{ '{:>5}'.format(rec.type) }} {{ rec.rdata }}
+{%       endfor %}
+{%     endif %}
+
+{%   endfor %}
+{% endif %}

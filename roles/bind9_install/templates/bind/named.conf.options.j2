@@ -72,25 +72,17 @@ key "{{ zone.name }}_ddns_update" {
 {%   endfor %}
 {% endif %}
 
-acl our_networks {
-	// Permitted for queries
-{% if bind9_our_networks|default() %}
-{%   for network in bind9_our_networks %}
-	{{ network }};
-{%   endfor %}
-{% endif %}
+{%   for acl in bind9_acls %}
+{%     if acl.comment|default(false) %}
+// {{ acl.comment }}
+{%     endif %}
+acl {{ acl.name }} {
+{%     for target in acl.targets %}
+    {{ target }};
+{%     endfor %} 
 };
 
-acl our_neighbors {
-	// Permitted for transfers
-{% if bind9_our_neighbors|default() %}
-{%   for network in bind9_our_neighbors %}
-	{{ network }};
 {%   endfor %}
-{% endif %}
-};
-
-
 
 {% if bind9_named_logging %}
 logging {
@@ -106,4 +98,3 @@ logging {
   {% endfor %}
 };
 {% endif %}
-
