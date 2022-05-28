@@ -1,0 +1,16 @@
+
+- name: install bind9 rndc key
+  template:
+    src: "{{ bind9_templates | default('') }}bind/rndc.key.j2"
+    dest: /etc/bind/rndc.key
+    owner: "{{ bind9_user }}"
+    group: "{{ bind9_group }}"
+    mode: 0640
+  when: bind9_rndc_key|default()
+  notify:
+    - restart bind9
+  tags:
+    - role:bind9:rndc_key
+    - role:bind9:installation
+    - role:bind9:configuration
+    - role:bind9:zones:change

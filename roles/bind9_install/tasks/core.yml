@@ -1,0 +1,159 @@
+---
+- name: "block: backup existing bind9 files"
+  block:
+    - name: "bind9: backup dest: {{ bind9_backup_path }}"
+      file:
+        state: directory
+        path: "{{ bind9_backup_path }}"
+        recurse: yes
+      tags:
+        - role:bind9:backup
+
+    - name: "bind9: create temporary backup location on host"
+      tempfile:
+        state: directory
+        path: "{{ bind9_backup_path }}"
+        suffix: bind9-backup
+      register: bind9_backup_path_latest
+      tags:
+        - role:bind9:backup
+
+    - name: "bind9: backup existing critical files"
+      copy:
+        remote_src: yes
+        src: "{{ item }}"
+        dest: "{{ bind9_backup_path_latest.path }}/{{ item }}"
+      loop:
+        - "{{ bind9_path_default_bind }}"
+        - "{{ bind9_path_logrotated_bind }}"
+        - "{{ bind9_path_etc }}"
+      register: bind9_backup_content
+      tags:
+        - role:bind9:backup
+
+
+
+- name: "block: core bind9 installation"
+  block:
+    
+    - name: "bind9: install {{ bind9_version }}"
+      apt:
+        pkg: "{{ bind9_packages }}"
+        state: present
+        cache_valid_time: 600
+      tags:
+        - role:bind9:installation
+
+    - name: "bind9: {{ bind9_path_default_bind }}"
+      template:
+        src: "{{ bind9_templates | default('') }}bind/default.j2"
+        dest: "{{ bind9_path_default_bind }}"
+        owner: root
+        group: root
+        mode: 0644
+        backup: true
+      notify:
+        - restart bind9
+      register:
+        bind9_etc_default
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+
+    
+    - name: "bind9: {{ bind9_log_path }}"
+      file:
+        path: "{{ bind9_log_path }}"
+        state: directory
+        owner: "{{ bind9_user }}"
+        group: "{{ bind9_group }}"
+        mode: 075
+      when: bind9_named_logging
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+
+    - name: "bind9: logrotate.d/bind"
+      template:
+        src: "{{ bind9_templates | default('') }}logrotate.d/bind.j2"
+        dest: "{{ bind9_path_logrotated_bind }}"
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 0644
+      when: bind9_named_logging
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+
+
+    - name: "bind9: {{ bind9_path_etc }}/named.conf.*"
+      template:
+        src: "{{ bind9_templates | default('') }}bind/{{ item }}.j2"
+        dest: "{{ bind9_path_etc }}/etc/bind/{{ item }}"
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 0644
+        backup: true
+      with_items:
+        - named.conf.local
+        - named.conf.options
+      notify:
+        - reload bind9
+      register: bind9_named_conf
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+        - role:bind9:zones:change
+
+    - name: "bind9: validate named.conf"
+      command: named-checkconf
+      register: bind9_reg_named_checkconf
+      become: true
+      become_user: "{{ bind9_user }}"
+      changed_when: False
+      vars:
+        ansible_ssh_pipelining: True
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+        - role:bind9:zones:change    
+
+    - name: "bind9: {{ bind9_path_etc }}/zones"
+      file:
+        path: "{{ bind9_path_etc }}/zones"
+        state: directory
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 02775
+      when: bind9_authoritative|default()
+      tags:
+        - role:bind9:installation
+
+    - name: "bind9: {{ bind9_path_etc }}/zones/includes"
+      file:
+        path: "{{ bind9_path_etc }}/zones/includes"
+        state: directory
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 0755
+      when: bind9_authoritative|default()
+      tags:
+        - role:bind9:installation
+
+    - name: "bind9: authoritative include files"
+      template:
+        src: "bind/zones/includes/{{ item }}.j2"
+        dest: "{{ bind9_path_etc }}/zones/includes/{{ item }}"
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 0644
+      with_items: "{{ bind9_authoritative_includes }}"
+      when: bind9_authoritative|default()
+      notify:
+        - zone file change
+        - reload bind9
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+        - role:bind9:zones:change    
+

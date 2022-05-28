@@ -1,0 +1,57 @@
+---
+
+- name: create dynamic bind9 zone files
+  template:
+    src: "{{ bind9_templates | default('') }}bind/zones/db.template.j2"
+    dest: /etc/bind/zones/db.{{ item.name }}
+    owner: root
+    group: "{{ bind9_group }}"
+    mode: 0644
+  with_items: "{{ bind9_zones_dynamic }}"
+  when:
+    - bind9_authoritative|default()
+    - item.type|default(bind9_zone_type) == 'master'
+  notify:
+    - zone file change
+    - reload bind9
+  tags:
+    - role:bind9:zones
+    - role:bind9:installation
+    - role:bind9:zones:change    
+
+- name: install static bind9 zone files
+  copy:
+    src: bind/zones/db.{{ item.name }}
+    dest: /etc/bind/zones/db.{{ item.name }}
+    owner: root
+    group: "{{ bind9_group }}"
+    mode: 0644
+    force: "{{ item.force_update|default('yes') }}"
+  with_items: "{{ bind9_zones_static }}"
+  when:
+    - bind9_authoritative|default()
+    - item.type|default(bind9_zone_type) == 'master'
+  notify:
+    - zone file change
+    - reload bind9
+  tags:
+    - role:bind9:zones
+    - role:bind9:installation
+    - role:bind9:zones:change
+
+- name: check validity of zone files
+  command: named-checkzone {{ item.name }} /etc/bind/zones/db.{{ item.name }}
+  register: bind9_reg_named_checkzone
+  become: true
+  become_user: "{{ bind9_user }}"
+  with_items:
+    - "{{ bind9_zones_dynamic }}"
+    - "{{ bind9_zones_static }}"
+  when: item.type|default(bind9_zone_type) == 'master'
+  changed_when: False
+  vars:
+    ansible_ssh_pipelining: True
+
+  tags:
+    - role:bind9:installation
+    - role:bind9:zones:change

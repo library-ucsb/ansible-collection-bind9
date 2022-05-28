@@ -141,8 +141,8 @@ Those two values are then referenced in the un-encrypted `bind9-rndc.yml` file.
 
 ## Ops Member / Zone Maintenance
 
-See [ZONES.md](ZONES.md)
+See [docs/ZONES.md](docs/ZONES.md)
 
 ## Ops Member / GitHub Actions
 
-See [GHA.md](GHA.md)
+See [docs/GHA.md](docs/GHA.md)
