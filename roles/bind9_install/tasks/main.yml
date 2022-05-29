@@ -1,9 +1,13 @@
 ---
 
-- import_tasks: "{{ item }}.yml"
-  name: "bind9: {{ item }}.yml"
-  loop:
-    - core
-    - rndc
-    - dnssec
-    - zones
+- import_tasks: core.yml
+  name: "bind9: core.yml"
+
+- import_tasks: rndc.yml
+  name: "bind9: rndc.yml"
+
+- import_tasks: dnssec.yml
+  name: "bind9: dnssec.yml"
+
+- import_tasks: zones.yml
+  name: "bind9: zones.yml"
