@@ -127,6 +127,16 @@
         - role:bind9:installation
         - role:bind9:configuration
 
+    - name: "bind9: {{ bind9_path_etc }}/named.conf"
+      template:
+        src: "{{ bind9_templates | default('') }}bind/named.conf.j2"
+        dest: "{{ bind9_path_etc }}/named.conf"
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 0644
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
 
     - name: "bind9: {{ bind9_path_etc }}/named.conf.*"
       template:

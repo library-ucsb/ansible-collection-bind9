@@ -1,0 +1,5 @@
+
+
+{% for conf in bind9_named_conf_files %}
+include "{{ conf }}";
+{% endfor %}

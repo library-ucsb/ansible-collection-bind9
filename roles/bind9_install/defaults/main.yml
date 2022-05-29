@@ -7,6 +7,11 @@ bind9_path_default_bind: /etc/default/bind9
 bind9_path_logrotated_bind: /etc/logrotate.d/bind
 bind9_path_etc: /etc/bind
 
+bind9_named_conf_files:
+  - "/etc/bind/named.conf.options"
+  - "/etc/bind/named.conf.local"
+  - "/etc/bind/named.conf.default-zones"
+
 # User and group for bind
 bind9_user: bind
 bind9_group: bind
