@@ -25,14 +25,16 @@
         - "{{ bind9_path_default_bind }}"
         - "{{ bind9_path_logrotated_bind }}"
         - "{{ bind9_path_etc }}"
+      loop_control:
+        loop_var: type_check
       register: bind9_backup_stat 
       tags:
         - role:bind9:backup
 
     - name: "bind9: stat object"
       debug:
-        msg: "bind9_backup_stat: {{ item }}"
-      loop: "{{ bind9_backup_stat }}"
+        msg: "bind9_backup_stat: {{ item.type_check }}"
+      loop: "{{ bind9_backup_stat.results }}"
       tags:
         - role:bind9:backup
 
