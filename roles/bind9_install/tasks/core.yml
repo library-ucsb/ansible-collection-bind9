@@ -18,26 +18,6 @@
       tags:
         - role:bind9:backup
 
-    - name: "bind9: identifying the list of objects to backup"
-      stat:
-        path: "{{ inner_loop }}"
-      loop:
-        - "{{ bind9_path_default_bind }}"
-        - "{{ bind9_path_logrotated_bind }}"
-        - "{{ bind9_path_etc }}"
-      loop_control:
-        loop_var: inner_loop
-      register: bind9_backup_stat 
-      tags:
-        - role:bind9:backup
-
-    - name: "bind9: stat object"
-      debug:
-        msg: "bind9_backup_stat: {{ item.inner_loop }}\nisdir: {{ item.stat.isdir }}\nname: {{ item }}"
-      loop: "{{ bind9_backup_stat.results }}"
-      tags:
-        - role:bind9:backup
-
     - name: "bind9: backup existing critical files"
       copy:
         remote_src: yes
@@ -46,13 +26,21 @@
       loop:
         - "{{ bind9_path_default_bind }}"
         - "{{ bind9_path_logrotated_bind }}"
-        - "{{ bind9_path_etc }}"
-      when: bind9_backup_stat["{{ item }}"].stat.isdir
-      register: bind9_backup_content
+      
+      register: bind9_backup_content_files
       tags:
         - role:bind9:backup
 
-
+    - name: "bind9: backup existing critical directories"
+      copy:
+        remote_src: yes
+        src: "{{ item }}"
+        dest: "{{ bind9_backup_path_latest.path }}/{{ item }}"
+      loop:
+        - "{{ bind9_path_etc }}"
+      register: bind9_backup_content_directories
+      tags:
+        - role:bind9:backup
 
 - name: "block: core bind9 installation"
   block:
