@@ -3,7 +3,7 @@
 bind9_version: 9.16.1
 bind9_backup_path: "/home/{{ ansible_user }}/bind9/backups"
 
-bind9_path_default_bind: /etc/default/bind
+bind9_path_default_bind: /etc/default/bind9
 bind9_path_logrotated_bind: /etc/logrotate.d/bind
 bind9_path_etc: /etc/bind
 
