@@ -33,7 +33,7 @@
 
     - name: "bind9: stat object"
       debug:
-        msg: "bind9_backup_stat: {{ item.inner_loop }}\nisdir: {{ item.stat.isdir }}"
+        msg: "bind9_backup_stat: {{ item.inner_loop }}\nisdir: {{ item.stat.isdir }}\nname: {{ item }}"
       loop: "{{ bind9_backup_stat.results }}"
       tags:
         - role:bind9:backup
