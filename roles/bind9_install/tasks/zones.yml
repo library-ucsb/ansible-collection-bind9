@@ -20,6 +20,7 @@
         - role:bind9:zones
         - role:bind9:installation
         - role:bind9:zones:change    
+        - role:bind9:gha:zone:deploy
 
     - name: install static bind9 zone files
       copy:
@@ -40,6 +41,7 @@
         - role:bind9:zones
         - role:bind9:installation
         - role:bind9:zones:change
+        - role:bind9:gha:zone:deploy
 
     - name: check validity of zone files
       command: named-checkzone {{ item.name }} /etc/bind/zones/db.{{ item.name }}
