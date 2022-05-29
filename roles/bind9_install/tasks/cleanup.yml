@@ -1,0 +1,12 @@
+---
+
+
+- name: "bind9: post run cleanup"
+  file:
+    path: "{{ bind9_backup_path_latest.path }}"
+    state: absent
+  tags:
+    - role:bind9:cleanup
+    - role:bind9:installation
+    - role:bind9:configuration
+    - role:bind9:logging

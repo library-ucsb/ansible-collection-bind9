@@ -1,5 +1,8 @@
 ---
 
+- import_tasks: backup.yml
+  name: "bind9: backup.yml"
+  
 - import_tasks: core.yml
   name: "bind9: core.yml"
 
@@ -11,3 +14,6 @@
 
 - import_tasks: zones.yml
   name: "bind9: zones.yml"
+
+- import_tasks: cleanup.yml
+  name: "bind9: cleanup.yml"
