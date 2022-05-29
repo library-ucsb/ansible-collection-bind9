@@ -44,7 +44,7 @@
 - name: "block: core bind9 installation"
   block:
     
-    - name: "bind9: install package: {{ bind9_packages }} version: {{ bind9_version }}"
+    - name: "bind9: install bind9 [ version: {{ bind9_version }} ]"
       apt:
         pkg: "{{ bind9_packages }}"
         state: present
@@ -83,7 +83,7 @@
         - role:bind9:configuration
         - role:bind9:logging
 
-    - name: "bind9: logrotate.d/bind"
+    - name: "bind9: {{ bind9_path_logrotated_bind }}"
       template:
         src: "{{ bind9_templates | default('') }}logrotate.d/bind.j2"
         dest: "{{ bind9_path_logrotated_bind }}"
