@@ -28,6 +28,11 @@ Runs the tasks that affect:
  - dynamic zones
  - static zones
 
+### role:bind9:backup
+Runes tasks that backs up:
+  - /etc/default/bind
+  - /etc/logrotate.d/bind
+  - /etc/bind
 
 ## Adding to Playbook
 
