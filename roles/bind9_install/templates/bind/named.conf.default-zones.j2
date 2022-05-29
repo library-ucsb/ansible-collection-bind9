@@ -11,7 +11,7 @@ zone "." {
 // {{ ansible_managed }}
 
 {% for zone in bind9_default_zones %}
-{%   if zone.zonefile_entry is defined and zonefile_entry == no %}
+{%   if zone.zonefile_entry is defined and zone.zonefile_entry == no %}
 zone "{{ zone.zonename }}"
         type master;
         file "{{ bind9_path_etc }}/db.{{ zone.name }}";
