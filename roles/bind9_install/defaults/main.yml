@@ -12,6 +12,23 @@ bind9_named_conf_files:
   - "/etc/bind/named.conf.local"
   - "/etc/bind/named.conf.default-zones"
 
+bind9_default_zones:
+  - name: '0'
+    zonename: 0.in-addr.arpa
+  - name: '255'
+    zonename: 255.in-addr.arpa
+  - name: 'empty'
+    zonefile_entry: no  
+  - name: 127
+    zonename: 127.in-addr.arpa
+    rrs: 
+      - {'label': '1.0.0', 'type': 'PTR', 'rdata': 'localhost.'}
+  - name: local
+    zonename: localhost
+    rrs: 
+      - {'label': '@', 'type': 'A', 'rdata': '127.0.0.1'}
+      - {'label': '@', 'type': 'AAAA', 'rdata': '::1'}
+
 # User and group for bind
 bind9_user: bind
 bind9_group: bind

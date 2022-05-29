@@ -1,0 +1,21 @@
+
+$TTL    604800
+@       IN      SOA     localhost. root.localhost. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      localhost.
+
+; ansible generated zones 
+{% for db in bind9_default_zones %}
+# {{ db.name }}
+{%     if db.rrs is defined and db.rrs | length > 0 %}
+{%         for entry in db.rrs %}
+{{ '{:50}'.format(entry.label) }} {{ '{:>5}'.format('IN') }} {{ '{:>6}'.format(entry.type) }}  {{ resource.rdata }}
+{%          endfor %}
+{%     endif %}
+
+{% endfor %}
