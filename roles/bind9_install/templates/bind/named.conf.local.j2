@@ -50,7 +50,7 @@ zone "{{ zone.name }}" {
     also-notify { {{ zone.also_notify|join('; ') }}; };
 {%     endif %}
 {%     if zone.allow_query is defined and zone.allow_query | length > 0 %}
-    allow-query { any; };
+    allow-query { {{ zone.allow_query|join('; ') }}; };
 {%     endif %}
 {%     if (bind9_dnssec|default() or zone.dnssec|default()) and zone.dnssec|default(bind9_dnssec_zones_default_enabled) %}
     auto-dnssec maintain;
