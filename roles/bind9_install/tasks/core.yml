@@ -26,19 +26,17 @@
       loop:
         - "{{ bind9_path_default_bind }}"
         - "{{ bind9_path_logrotated_bind }}"
-      
       register: bind9_backup_content_files
       tags:
         - role:bind9:backup
 
-    - name: "bind9: backup existing critical directories"
-      copy:
-        remote_src: yes
-        src: "{{ item }}"
-        dest: "{{ bind9_backup_path_latest.path }}/{{ item.lstrip('/') }}"
-      loop:
-        - "{{ bind9_path_etc }}"
-      register: bind9_backup_content_directories
+    - name: "bind9: create archive backup of {{ bind9_path_etc }}"
+      community.general.archive:
+        path: "{{ bind9_path_etc }}"
+        dest: "{{ bind9_backup_path_latest.path }}/bind9.etc.bind.gz"
+        format: gz
+        force_archive: true
+      register: bind9_backup_archive
       tags:
         - role:bind9:backup
 
