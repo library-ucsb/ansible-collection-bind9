@@ -131,7 +131,7 @@
     - name: "bind9: {{ bind9_path_etc }}/named.conf.*"
       template:
         src: "{{ bind9_templates | default('') }}bind/{{ item }}.j2"
-        dest: "{{ bind9_path_etc }}/etc/bind/{{ item }}"
+        dest: "{{ bind9_path_etc }}/{{ item }}"
         owner: root
         group: "{{ bind9_group }}"
         mode: 0644
