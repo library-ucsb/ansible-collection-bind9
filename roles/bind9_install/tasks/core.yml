@@ -40,6 +40,36 @@
       tags:
         - role:bind9:backup
 
+- name: "block: recover from playbook pre-run backup"
+  block:
+
+    - name: "bind9: restoring {{ bind9_path_etc }}"
+      ansible.builtin.unarchive:
+        remote_src: yes
+        src: "{{ bind9_backup_path_latest.path }}/bind9.etc.bind.gz"
+        dest: "{{ bind9_path_etc }}"
+      tags:
+        - role:bind9:restore
+
+    - name: "bind9: restoring system files"
+      ansible.builtin.copy:
+        remote_src: yes
+        src: "{{ bind9_backup_path_latest.path }}/{{ item | basename }}"
+        dest: "{{ item }}"
+      loop:
+        - "{{ bind9_path_default_bind }}"
+        - "{{ bind9_path_logrotated_bind }}"
+      tags:
+        - role:bind9:restore
+
+    - name: "bind9: restart bind service - {{ bind9_servie_name }}"
+      ansible.builtin.service:
+        name: "{{ bind9_service_name }}"
+        state: restarted
+      tags:
+        - role:bind9:restore
+
+
 - name: "block: core bind9 installation"
   block:
     

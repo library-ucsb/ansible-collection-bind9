@@ -11,6 +11,8 @@ bind9_path_etc: /etc/bind
 bind9_user: bind
 bind9_group: bind
 
+bind9_service_name: named
+
 # Listen on IPv6 interfaces
 bind9_ipv6: yes
 
