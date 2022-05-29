@@ -35,7 +35,7 @@
       copy:
         remote_src: yes
         src: "{{ item }}"
-        dest: "{{ bind9_backup_path_latest.path }}/{{ item }}"
+        dest: "{{ bind9_backup_path_latest.path }}/{{ item.lstrip('/') }}"
       loop:
         - "{{ bind9_path_etc }}"
       register: bind9_backup_content_directories
