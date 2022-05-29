@@ -149,6 +149,7 @@
       with_items:
         - named.conf.local
         - named.conf.options
+        - named.conf.default-zones
       notify:
         - reload bind9
       register: bind9_named_conf
