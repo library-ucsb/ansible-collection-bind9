@@ -18,6 +18,21 @@
       tags:
         - role:bind9:backup
 
+    - name: "bind9: identifying the list of objects to backup"
+      stat:
+        path: "{{ item }}"
+      loop:
+        - "{{ bind9_path_default_bind }}"
+        - "{{ bind9_path_logrotated_bind }}"
+        - "{{ bind9_path_etc }}"
+      register: bind9_backup_stat 
+      tags:
+        - role:bind9:backup
+
+    - name: "bind9: stat object"
+      debug:
+        msg: "bind9_backup_stat: {{ bind9_backup_stat }}"
+
     - name: "bind9: backup existing critical files"
       copy:
         remote_src: yes
@@ -27,6 +42,7 @@
         - "{{ bind9_path_default_bind }}"
         - "{{ bind9_path_logrotated_bind }}"
         - "{{ bind9_path_etc }}"
+      when: bind9_backup_stat["{{ item }}"].stat.isdir
       register: bind9_backup_content
       tags:
         - role:bind9:backup
