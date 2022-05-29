@@ -57,6 +57,7 @@
       tags:
         - role:bind9:installation
         - role:bind9:zones:change
+  
   rescue:
 
     - name: "bind9: stop service '{{ bind9_service_name }}'"
@@ -90,7 +91,7 @@
       tags:
         - role:bind9:restore
 
-    - name: "bind9: restart bind service - {{ bind9_servie_name }}"
+    - name: "bind9: restart bind service - {{ bind9_service_name }}"
       ansible.builtin.service:
         name: "{{ bind9_service_name }}"
         state: restarted
