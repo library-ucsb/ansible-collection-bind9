@@ -115,27 +115,35 @@ bind9_packages:
 
 # Directory for bind9 files templates
 bind9_templates: ""
-# The default value takes templates form the {{ role_path }}/templates/ directory of the role
-# You can set your own templates, for example with:
-# bind9_templates: "{{ playbook_dir }}/host_vars/<my_host>/templates/"
 
-# Logging
-bind9_named_logging: False
-bind9_log_path: /var/log/bind
-bind9_log_severity: warning  # critical | error | warning | notice | info | debug [ level ] | dynamic
+# hourly, daily, weekly, monthly, yearly, size -number-[kMG]
+bind9_logrotate_frequency: daily
+bind9_logrotate_rotate_after: 7    # if frequency is 'daily', then this specifies days
+
+bind9_named_logging: true
+bind9_log_path: /var/log/named
+bind9_log_severity: info  # critical | error | warning | notice | info | debug [ level ] | dynamic
 bind9_log_versions: 3
 bind9_log_size: 60m           # Time units
 
 bind9_log_categories:
   - name: default
     destination: bind_log
+  - name: config
+    destination: bind_log
   - name: update
     destination: bind_log
   - name: update-security
     destination: bind_log
   - name: security
-    destination: default_syslog
+    destination: bind_log
   - name: queries
     destination: bind_log
-  - name: lame-servers
-    destination: 'null'
+  - name: resolver
+    destination: bind_log
+  - name: xfer-in
+    destination: bind_log
+  - name: xfer-out
+    destination: bind_log
+  - name: notify
+    destination: bind_log
