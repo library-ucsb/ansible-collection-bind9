@@ -32,7 +32,7 @@
     - name: "bind9: stat object"
       debug:
         msg: "bind9_backup_stat: {{ item }}"
-      loop: bind9_backup_stat.results
+      loop: bind9_backup_stat
       tags:
         - role:bind9:backup
 
