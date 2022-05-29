@@ -20,20 +20,20 @@
 
     - name: "bind9: identifying the list of objects to backup"
       stat:
-        path: "{{ item }}"
+        path: "{{ inner_loop }}"
       loop:
         - "{{ bind9_path_default_bind }}"
         - "{{ bind9_path_logrotated_bind }}"
         - "{{ bind9_path_etc }}"
       loop_control:
-        loop_var: type_check
+        loop_var: inner_loop
       register: bind9_backup_stat 
       tags:
         - role:bind9:backup
 
     - name: "bind9: stat object"
       debug:
-        msg: "bind9_backup_stat: {{ item.type_check }}"
+        msg: "bind9_backup_stat: {{ item.inner_loop }}"
       loop: "{{ bind9_backup_stat.results }}"
       tags:
         - role:bind9:backup
