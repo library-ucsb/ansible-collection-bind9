@@ -1,6 +1,6 @@
 ---
 
-- import_playbook: "{{ item }}.yml"
+- import_tasks: "{{ item }}.yml"
   name: "bind9: {{ item }}.yml"
   loop:
     - core
