@@ -31,7 +31,7 @@
 
     - name: "bind9: stat object"
       debug:
-        msg: "bind9_backup_stat: {{ bind9_backup_stat.results }}"
+        msg: "bind9_backup_stat: {{ bind9_backup_stat.results | tojson }}"
       tags:
         - role:bind9:backup
 
