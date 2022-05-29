@@ -22,7 +22,7 @@
       copy:
         remote_src: yes
         src: "{{ item }}"
-        dest: "{{ bind9_backup_path_latest.path }}/{{ item }}"
+        dest: "{{ bind9_backup_path_latest.path }}/{{ item | basename }}"
       loop:
         - "{{ bind9_path_default_bind }}"
         - "{{ bind9_path_logrotated_bind }}"
