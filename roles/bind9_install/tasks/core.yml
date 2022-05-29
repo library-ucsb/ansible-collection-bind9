@@ -76,9 +76,12 @@
         group: "{{ bind9_group }}"
         mode: 075
       when: bind9_named_logging
+      notify:
+        - reload bind9
       tags:
         - role:bind9:installation
         - role:bind9:configuration
+        - role:bind9:logging
 
     - name: "bind9: logrotate.d/bind"
       template:
@@ -91,6 +94,7 @@
       tags:
         - role:bind9:installation
         - role:bind9:configuration
+        - role:bind9:logging
 
     - name: "bind9: {{ bind9_path_etc }}/named.conf"
       template:
@@ -99,6 +103,8 @@
         owner: root
         group: "{{ bind9_group }}"
         mode: 0644
+      notify:
+        - reload bind9
       tags:
         - role:bind9:installation
         - role:bind9:configuration
@@ -122,6 +128,7 @@
         - role:bind9:installation
         - role:bind9:configuration
         - role:bind9:zones:change
+        - role:bind9:logging
       
     - name: "bind9: default zones"
       template:
