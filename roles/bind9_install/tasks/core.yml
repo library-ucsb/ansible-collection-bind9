@@ -96,6 +96,19 @@
         - role:bind9:configuration
         - role:bind9:logging
 
+    - name: "bind9: {{ bind9_path_etc }}"
+      file:
+        path: "{{ bind9_path_etc }}"
+        state: directory
+        owner: root
+        group: "{{ bind9_group }}"
+        mode: 02755
+      notify:
+        - reload bind9
+      tags:
+        - role:bind9:installation
+        - role:bind9:configuration
+
     - name: "bind9: {{ bind9_path_etc }}/named.conf"
       template:
         src: "{{ bind9_templates | default('') }}bind/named.conf.j2"
