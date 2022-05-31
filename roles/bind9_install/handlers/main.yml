@@ -10,11 +10,6 @@
     name: bind9
     state: reloaded
 
-- name: restart monit
-  service:
-    name: monit
-    state: restarted
-
 - name: zone file change
   debug:
     msg: "dummy handler"
