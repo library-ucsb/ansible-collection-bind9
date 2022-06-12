@@ -29,6 +29,14 @@ bind9_default_zones:
       - {'label': '@', 'type': 'A', 'rdata': '127.0.0.1'}
       - {'label': '@', 'type': 'AAAA', 'rdata': '::1'}
 
+bind9_statistics_channels:
+  - name: "default channel - localhost"
+    ip: 127.0.0.1
+    port: 8053
+    acls: 
+      - 127.0.0.1
+
+
 # User and group for bind
 bind9_user: bind
 bind9_group: bind

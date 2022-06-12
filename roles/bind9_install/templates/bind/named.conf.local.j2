@@ -27,7 +27,11 @@ masters {{ master.name }} {
 
 {% if bind9_statistics_enabled %}
 statistics-channels {
-  inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
+{%   for channel in bind9_statistics_channels %}
+  // {{ channel.name }}
+  inet {{ channel.ip }} port {{ channel.port }} allow { {{ channel.acls | join('; ') }}; };
+
+{%   endfor %}
 };
 {% endif %}
 
